@@ -3,7 +3,6 @@ package com.github.securecell.service;
 import android.content.Intent;
 import android.net.VpnService;
 import android.os.ParcelFileDescriptor;
-import android.util.Log;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
