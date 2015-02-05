@@ -43,28 +43,75 @@ public class VPNService extends VpnService
 
                     ByteBuffer packet = ByteBuffer.allocate(32767);
                     //e. Use a loop to pass packets.
-                    while(true)
+                    int timer = 0;
+                    // We keep forwarding packets till something goes wrong.
+                    while (true)
                     {
-                        
+                        // Assume that we did not make any progress in this iteration.
+                        boolean idle = true;
+                        // Read the outgoing packet from the input stream.
                         int length = in.read(packet.array());
-                        packet.put(packet.array());
-                        tunnel.write(packet);
-                        packet.clear();
-                            /*while (packet.hasRemaining())
-                            {
-                                Log.i("ok",""+packet.get());
-                                //System.out.print((char) packet.get());
-                            }*/
-                            /*packet.limit(length);
+                        if (length > 0)
+                        {
+                            // Write the outgoing packet to the tunnel.
+                            packet.limit(length);
                             tunnel.write(packet);
-                            packet.clear();*/
-                        
-                        //get packet with in
-                        //put packet to tunnel
-                        //get packet form tunnel
-                        //return packet with out
-                        //sleep is a must
-                        Thread.sleep(100);
+                            packet.clear();
+                            // There might be more outgoing packets.
+                            idle = false;
+                            // If we were receiving, switch to sending.
+                            if (timer < 1)
+                            {
+                                timer = 1;
+                            }
+                        }
+                        // Read the incoming packet from the tunnel.
+                        length = tunnel.read(packet);
+                        if (length > 0)
+                        {
+                            // Ignore control messages, which start with zero.
+                            if (packet.get(0) != 0)
+                            {
+                                // Write the incoming packet to the output stream.
+                                out.write(packet.array(), 0, length);
+                            }
+                            packet.clear();
+                            // There might be more incoming packets.
+                            idle = false;
+                            // If we were sending, switch to receiving.
+                            if (timer > 0)
+                            {
+                                timer = 0;
+                            }
+                        }
+                        // If we are idle or waiting for the network, sleep for a
+                        // fraction of time to avoid busy looping.
+                        if (idle)
+                        {
+                            Thread.sleep(100);
+                            // Increase the timer. This is inaccurate but good enough,
+                            // since everything is operated in non-blocking mode.
+                            timer += (timer > 0) ? 100 : -100;
+                            // We are receiving for a long time but not sending.
+                            if (timer < -15000)
+                            {
+                                // Send empty control messages.
+                                packet.put((byte) 0).limit(1);
+                                for (int i = 0; i < 3; ++i)
+                                {
+                                    packet.position(0);
+                                    tunnel.write(packet);
+                                }
+                                packet.clear();
+                                // Switch to sending.
+                                timer = 1;
+                            }
+                            // We are sending for a long time but not receiving.
+                            if (timer > 20000)
+                            {
+                                throw new IllegalStateException("Timed out");
+                            }
+                        }
                     }
 
                 }
