@@ -42,8 +42,12 @@ public class PlaceholderFragment extends Fragment
                 List<EnumMain> enumMainList = new ArrayList<EnumMain>();
                 
                 MainListAdapter mainListAdapter = new MainListAdapter(getActivity().getApplicationContext(), enumMainList);
-                
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "salut", null));
+
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Centre réseau", "description", getResources().getDrawable(R.drawable.ic_action_globe)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Gestionnaire des tâches", "description", getResources().getDrawable(R.drawable.ic_action_database)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Sauvegarde", "description", getResources().getDrawable(R.drawable.ic_action_cloud)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Protection bancaire", "description", getResources().getDrawable(R.drawable.ic_action_creditcard)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Etat du service", "description", getResources().getDrawable(R.drawable.ic_action_bars)));
                 
                 MainContainer.setAdapter(mainListAdapter);
                 return rootView;

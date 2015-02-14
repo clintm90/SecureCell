@@ -31,9 +31,13 @@ public class MainListAdapter extends ArrayAdapter<EnumMain>
         View rowView = inflater.inflate(R.layout.model_mainlist, parent, false);
         rowView.setTag(values.get(position));
 
-        TextView mChatListTitle = (TextView)rowView.findViewById(R.id.model_chatList_title);
-        TextView mChatListTimestamp = (TextView)rowView.findViewById(R.id.model_chatList_timestamp);
-        ImageView mChatListPhoto = (ImageView)rowView.findViewById(R.id.model_chatlist_photo);
+        TextView mMainListTitle = (TextView)rowView.findViewById(R.id.model_mainlist_title);
+        TextView mMainListDescription = (TextView)rowView.findViewById(R.id.model_mainlist_description);
+        ImageView mMainListIcon = (ImageView)rowView.findViewById(R.id.model_mainlist_icon);
+        
+        mMainListTitle.setText(values.get(position).Title);
+        mMainListDescription.setText(values.get(position).Description);
+        mMainListIcon.setImageDrawable(values.get(position).Photo);
 
         /*mChatListTitle.setText(values.get(position).Title);
 

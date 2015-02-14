@@ -4,7 +4,7 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/model_chatList_title"
+        android:id="@+id/model_mainlist_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="0dp"
@@ -12,33 +12,34 @@
         android:paddingRight="12dp"
         android:paddingTop="7dp"
         android:textSize="19dp"
-        android:text="@string/noset"
+        android:text="salut"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/tertiary_text_dark"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/model_chatlist_photo"
-        android:layout_toEndOf="@+id/model_chatlist_photo"/>
+        android:layout_toRightOf="@+id/model_mainlist_icon"
+        android:layout_toEndOf="@+id/model_mainlist_icon"/>
 
     <TextView
-        android:id="@+id/model_chatList_timestamp"
-        android:text="@string/noset"
+        android:id="@+id/model_mainlist_description"
+        android:text="salut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/tertiary_text_dark"
         android:paddingBottom="12dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
-        android:layout_below="@+id/model_chatList_title"
-        android:layout_toRightOf="@+id/model_chatlist_photo"
-        android:layout_toEndOf="@+id/model_chatlist_photo"
-        android:layout_alignWithParentIfMissing="true"/>
+        android:layout_alignWithParentIfMissing="true"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/model_mainlist_title"
+        android:layout_alignLeft="@+id/model_mainlist_title"
+        android:layout_alignStart="@+id/model_mainlist_title"/>
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/model_chatlist_photo"
+        android:id="@+id/model_mainlist_icon"
         android:src="@drawable/ic_launcher"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
