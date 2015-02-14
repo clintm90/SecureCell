@@ -51,7 +51,7 @@ public class PackageInstallation extends BroadcastReceiver
         mBuilder.setAutoCancel(false);
         mBuilder.setOngoing(true);
         mBuilder.setTicker(context.getString(R.string.appinstalled));
-        mBuilder.setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, Main.class), 0));
+        mBuilder.setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, Main.class).putExtra("redirect", true), 0));
         mBuilder.addAction(R.drawable.ic_action_yes, context.getResources().getString(R.string.yes), PendingIntent.getActivity(context, 0, new Intent(context, Main.class), 0));
         mBuilder.addAction(R.drawable.ic_action_no, context.getResources().getString(R.string.no), PendingIntent.getActivity(context, Activity.RESULT_OK, new Intent(context, Main.class), 0));
         //mBuilder.setSound(mSoundUri);

@@ -10,44 +10,52 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <!-- <uses-permission android:name="android.permission.INSTALL_PACKAGES" /> -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-        <receiver android:name=".receiver.NetworkChange">
+        <receiver android:name=".receiver.NetworkChange" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
-        <!--<receiver android:name=".receiver.PhoneCall">
+        <!--
+        <receiver android:name=".receiver.PhoneCall">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
-        </receiver>-->
-        
-        <receiver android:name=".receiver.Airplane">
+        </receiver>
+        -->
+
+        <receiver android:name=".receiver.Airplane" >
             <intent-filter>
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
-
-        <receiver android:name=".receiver.PackageInstallation"
-              android:enabled="true"
-              android:exported="true">
-            <intent-filter android:priority="100">
+        
+        <receiver
+            android:name=".receiver.PackageInstallation"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.PACKAGE_INSTALL" />
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <data android:scheme="package"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        
+
         <activity
             android:name=".Spashscreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -55,6 +63,7 @@
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -69,8 +78,27 @@
 
         <activity
             android:name=".Main"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".Browser"
+            android:label="@string/title_activity_browser"
+            android:parentActivityName=".Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.securecell.Main" />
+        </activity>
+
+        <receiver android:name=".LockWidget"
+                  android:label="Example Widget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/lock_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

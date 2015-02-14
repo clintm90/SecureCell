@@ -20,6 +20,10 @@
     <string name="settings">Options</string>
     <string name="share">Partager</string>
     <string name="more">En savoir plus</string>
-    <string name="about">A Propos&#8230;</string>
+    <string name="about">A Propos…</string>
+    <string name="title_activity_browser">Browser</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>

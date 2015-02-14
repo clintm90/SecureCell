@@ -2,6 +2,7 @@ package com.github.securecell;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.net.VpnService;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +18,21 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.github.securecell.service.VPNService;
+
+/*
+filter gps autorisation
+filter usb
+listen 22 port
+listen opened port + close port
+override gps
+filter mcc
+black list
+fingerprint or code
+rsa sms
+trust network + ip + dns
+trust app + decompile dex + permission
+Wifi trust
+*/
 
 public class Main extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
 {
@@ -90,6 +106,14 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
+    }
+    
+    public void OpenBrowser(View v)
+    {
+        Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("org.mozilla.firefox");
+        LaunchIntent.setData(Uri.parse("http://monip.org"));
+        Intent intent = new Intent(Main.this, Browser.class);
+        startActivity(intent);
     }
 
     public void onClick(View v)

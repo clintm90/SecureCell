@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.widget.Toast;
 
 import com.github.securecell.Main;
 
@@ -29,14 +30,14 @@ public class NetworkChange extends BroadcastReceiver
                     Intent MainActivity = new Intent(context, Main.class);
                     MainActivity.putExtra("WifiInfo", wifiInfo);
                     MainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(MainActivity);
-                    //Toast.makeText(context.getApplicationContext(), wifiInfo.getSSID(), Toast.LENGTH_LONG).show();
+                    //context.startActivity(MainActivity);
+                    Toast.makeText(context.getApplicationContext(), wifiInfo.getMacAddress(), Toast.LENGTH_LONG).show();
                 }
                 else if(networkInfo.getType() == ConnectivityManager.TYPE_MOBILE)
                 {
                     Intent MainActivity = new Intent(context, Main.class);
-                    context.startActivity(MainActivity);
-                    //Toast.makeText(context.getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                    MainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //context.startActivity(MainActivity);
                 }
             }
             else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE))

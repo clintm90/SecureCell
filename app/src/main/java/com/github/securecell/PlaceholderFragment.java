@@ -6,6 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceholderFragment extends Fragment
 {
@@ -33,6 +37,15 @@ public class PlaceholderFragment extends Fragment
         {
             case 1:
                 rootView = inflater.inflate(R.layout.fragment_main, container, false);
+                ListView MainContainer = (ListView)rootView.findViewById(R.id.MainContainer);
+                
+                List<EnumMain> enumMainList = new ArrayList<EnumMain>();
+                
+                MainListAdapter mainListAdapter = new MainListAdapter(getActivity().getApplicationContext(), enumMainList);
+                
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "salut", null));
+                
+                MainContainer.setAdapter(mainListAdapter);
                 return rootView;
             
             default:
