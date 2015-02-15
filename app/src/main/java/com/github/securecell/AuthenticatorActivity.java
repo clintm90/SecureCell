@@ -7,23 +7,18 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 public class AuthenticatorActivity extends AccountAuthenticatorActivity
 {
     public static final String PARAM_AUTHTOKEN_TYPE = "auth.token";
     public static final String PARAM_CREATE = "create";
-
     public static final int REQ_CODE_CREATE = 1;
-
     public static final int REQ_CODE_UPDATE = 2;
-
     public static final String EXTRA_REQUEST_CODE = "req.code";
-
     public static final int RESP_CODE_SUCCESS = 0;
-
     public static final int RESP_CODE_ERROR = 1;
-
     public static final int RESP_CODE_CANCEL = 2;
 
     @Override
@@ -31,14 +26,16 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     {
         // TODO Auto-generated method stub
         super.onCreate(icicle);
-        this.setContentView(R.layout.activity_authenticator);
+        
+        setContentView(R.layout.activity_authenticator);
+        
+        WebView webView = (WebView)findViewById(R.id.webViewLogin);
+        webView.loadUrl("http://151.80.131.143/securecell/auth/");
     }
 
     public void onCancelClick(View v)
     {
-
-        this.finish();
-
+        finish();
     }
 
     public void onSaveClick(View v)
@@ -51,9 +48,9 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         String apiKey;
         boolean hasErrors = false;
 
-        tvUsername = (TextView) this.findViewById(R.id.uc_txt_username);
-        tvPassword = (TextView) this.findViewById(R.id.uc_txt_password);
-        tvApiKey = (TextView) this.findViewById(R.id.uc_txt_api_key);
+        tvUsername = (TextView) findViewById(R.id.uc_txt_username);
+        tvPassword = (TextView) findViewById(R.id.uc_txt_password);
+        tvApiKey = (TextView) findViewById(R.id.uc_txt_api_key);
 
         tvUsername.setBackgroundColor(Color.WHITE);
         tvPassword.setBackgroundColor(Color.WHITE);
@@ -101,13 +98,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         if (hasErrors)
         {
-
             // handel errors
-
         }
         else
         {
-
             // This is the magic that addes the account to the Android Account Manager
             final Account account = new Account(username, accountType);
             accMgr.addAccountExplicitly(account, password, null);
@@ -125,5 +119,4 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         }
     }
-
 }

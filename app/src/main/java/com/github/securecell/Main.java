@@ -16,7 +16,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.securecell.service.VPNService;
 
@@ -156,7 +155,11 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        Toast.makeText(getApplicationContext(), "salut", Toast.LENGTH_LONG).show();
+        if(data.getExtras().getInt("result") == 1)
+        {
+            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        }
+        
         if (resultCode == RESULT_OK)
         {
             startService(mVPN);

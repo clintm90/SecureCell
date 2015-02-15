@@ -30,7 +30,7 @@ public class Browser extends ActionBarActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
-        
+
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
         final WebView webView = (WebView) findViewById(R.id.webView);
@@ -356,6 +356,13 @@ public class Browser extends ActionBarActivity
     }
 
     @Override
+    public void onBackPressed()
+    {
+        setResult(RESULT_OK, new Intent().putExtra("result", 1));
+        super.onBackPressed();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -366,17 +373,15 @@ public class Browser extends ActionBarActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
+        switch (id)
         {
-            return true;
+            case android.R.id.home:
+                setResult(RESULT_OK, new Intent().putExtra("result", 1));
+                finish();
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
