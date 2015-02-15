@@ -30,6 +30,8 @@ public class Browser extends ActionBarActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
+        
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
         final WebView webView = (WebView) findViewById(R.id.webView);
         webView.requestFocusFromTouch();

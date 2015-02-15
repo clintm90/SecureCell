@@ -15,13 +15,16 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
 
     <!-- <uses-permission android:name="android.permission.INSTALL_PACKAGES" /> -->
     <application
+        android:name=".Initialize"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <receiver android:name=".receiver.NetworkChange" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -42,7 +45,6 @@
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
-        
         <receiver
             android:name=".receiver.PackageInstallation"
             android:enabled="true"
@@ -89,8 +91,9 @@
                 android:value="com.github.securecell.Main" />
         </activity>
 
-        <receiver android:name=".LockWidget"
-                  android:label="Example Widget" >
+        <receiver
+            android:name=".LockWidget"
+            android:label="Example Widget" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -99,6 +102,21 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/lock_widget_info" />
         </receiver>
+
+        <service android:name=".AuthenticatorService" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <activity
+            android:name=".AuthenticatorActivity"
+            android:label="@string/title_activity_authenticator" >
+        </activity>
     </application>
 
 </manifest>

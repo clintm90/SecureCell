@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.securecell.service.VPNService;
 
@@ -37,7 +38,7 @@ Wifi trust
 public class Main extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
 {
     Intent mVPN;
-    
+
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private SharedPreferences mPrefsGlobal;
     private SharedPreferences.Editor mStorageGlobal;
@@ -147,8 +148,15 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         return super.onKeyDown(keyCode, e);
     }*/
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onPause();
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        Toast.makeText(getApplicationContext(), "salut", Toast.LENGTH_LONG).show();
         if (resultCode == RESULT_OK)
         {
             startService(mVPN);

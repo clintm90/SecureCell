@@ -9,10 +9,10 @@ public class EnumMain
     public String Description;
     public Drawable Photo;
 
-    public EnumMain(Context context, String title, String description,Drawable photo)
+    public EnumMain(Context context, String title, String description, Drawable photo)
     {
         Title = title;
-        Description = "salut";
+        Description = description;
         Photo = photo;
     }
 }

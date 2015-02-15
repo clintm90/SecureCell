@@ -14,7 +14,7 @@
         android:textSize="19dp"
         android:text="salut"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/tertiary_text_dark"
+        android:textColor="#333333"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/model_mainlist_icon"
@@ -27,14 +27,14 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:textColor="@android:color/tertiary_text_dark"
-        android:paddingBottom="12dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:layout_alignWithParentIfMissing="true"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:layout_below="@+id/model_mainlist_title"
         android:layout_alignLeft="@+id/model_mainlist_title"
-        android:layout_alignStart="@+id/model_mainlist_title"/>
+        android:layout_alignStart="@+id/model_mainlist_title"
+        android:paddingBottom="7dp"/>
 
     <ImageView
         android:layout_width="50dp"

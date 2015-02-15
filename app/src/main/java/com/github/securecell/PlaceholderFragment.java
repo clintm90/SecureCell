@@ -1,11 +1,15 @@
 package com.github.securecell;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -43,11 +47,54 @@ public class PlaceholderFragment extends Fragment
                 
                 MainListAdapter mainListAdapter = new MainListAdapter(getActivity().getApplicationContext(), enumMainList);
 
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Centre réseau", "description", getResources().getDrawable(R.drawable.ic_action_globe)));
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Gestionnaire des tâches", "description", getResources().getDrawable(R.drawable.ic_action_database)));
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Sauvegarde", "description", getResources().getDrawable(R.drawable.ic_action_cloud)));
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Protection bancaire", "description", getResources().getDrawable(R.drawable.ic_action_creditcard)));
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Etat du service", "description", getResources().getDrawable(R.drawable.ic_action_bars)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Centre des Connexions", "Gérer votre accès au réseau", getResources().getDrawable(R.drawable.ic_action_globe)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Gestionnaire des Tâches", "Protegez-vous des apps intruisives", getResources().getDrawable(R.drawable.ic_action_database)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Sauvegarde en Ligne", "Protegez-vous de la perte de données", getResources().getDrawable(R.drawable.ic_action_cloud)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Données de Localisation", "Configurer l'accès au GPS", getResources().getDrawable(R.drawable.ic_action_location)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Protection Bancaire", "Protection SSL bancaire", getResources().getDrawable(R.drawable.ic_action_creditcard)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Etat du Service", "Etat de 151.80.131.143", getResources().getDrawable(R.drawable.ic_action_temperature)));
+                
+                MainContainer.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                    {
+                        ((ImageView)view.findViewById(R.id.model_mainlist_icon)).getDrawable().setColorFilter(0xffff0000, PorterDuff.Mode.MULTIPLY);   //.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+                        
+                        Intent ToIntent = null;
+                        switch(position)
+                        {
+                            case 0:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                            
+                            case 1:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                            
+                            case 2:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                            
+                            case 3:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                            
+                            case 4:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                            
+                            case 5:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                            
+                            default:
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                break;
+                        }
+                        startActivityForResult(ToIntent, 0);
+                    }
+                });
                 
                 MainContainer.setAdapter(mainListAdapter);
                 return rootView;
