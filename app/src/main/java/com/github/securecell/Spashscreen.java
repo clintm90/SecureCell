@@ -2,23 +2,37 @@ package com.github.securecell;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
-import android.net.VpnService;
 import android.os.Bundle;
-import android.view.View;
+import android.preference.PreferenceManager;
 import android.widget.ProgressBar;
+
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+
+import javax.crypto.Cipher;
 
 public class Spashscreen extends Activity
 {
     Intent MainActivity;
-    
+
+    private Cipher mCipher;
+    private KeyPairGenerator mKeyPairGenerator;
+    private KeyFactory mKeyFactory;
+    private KeyPair mKP;
+    private SharedPreferences mPrefsGlobal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
+        mPrefsGlobal = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        
         setContentView(R.layout.activity_spashscreen);
 
         MainActivity = new Intent(this, Main.class);
@@ -26,12 +40,39 @@ public class Spashscreen extends Activity
         MediaPlayer startupSound = MediaPlayer.create(getApplicationContext(), R.raw.startup);
         startupSound.start();
 
-        final Thread progressThread = new Thread(loader);
-        progressThread.setName("loader");
-        progressThread.start();
+        final Thread ProgressThread = new Thread(Loader);
+        final Thread InitThread = new Thread(Init);
+        
+        ProgressThread.setName("ProgressThread");
+        InitThread.setName("InitThread");
+        
+        ProgressThread.start();
+        InitThread.start();
     }
 
-    final Runnable loader = new Runnable()
+    final Runnable Init = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            try
+            {
+                mCipher = Cipher.getInstance("RSA");
+                mKeyPairGenerator = KeyPairGenerator.getInstance("RSA");
+                mKeyPairGenerator.initialize(512);
+                //mKeyFactory = KeyFactory.getInstance("RSA");
+                mKP = mKeyPairGenerator.generateKeyPair();
+                mPrefsGlobal.edit().putString("RSAPublicKey", mKP.getPublic().getEncoded().toString());
+                mPrefsGlobal.edit().putString("RSAPrivateKey", mKP.getPrivate().getEncoded().toString());
+            }
+            catch (Exception exception)
+            {
+                mKeyPairGenerator = null;
+            }
+        }
+    };
+    
+    final Runnable Loader = new Runnable()
     {
         public void run()
         {

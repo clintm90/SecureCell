@@ -8,11 +8,13 @@ public class EnumMain
     public String Title;
     public String Description;
     public Drawable Photo;
+    public Drawable HoverPhoto;
 
-    public EnumMain(Context context, String title, String description, Drawable photo)
+    public EnumMain(Context context, String title, String description, Drawable photo, Drawable hover_photo)
     {
         Title = title;
         Description = description;
         Photo = photo;
+        HoverPhoto = hover_photo;
     }
 }

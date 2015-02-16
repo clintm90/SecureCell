@@ -1,16 +1,12 @@
 package com.github.securecell;
 
-import android.accounts.Account;
-import android.accounts.AccountAuthenticatorActivity;
-import android.accounts.AccountManager;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
 
-public class AuthenticatorActivity extends AccountAuthenticatorActivity
+public class AuthenticatorActivity extends ActionBarActivity
 {
     public static final String PARAM_AUTHTOKEN_TYPE = "auth.token";
     public static final String PARAM_CREATE = "create";
@@ -24,13 +20,18 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     @Override
     protected void onCreate(Bundle icicle)
     {
-        // TODO Auto-generated method stub
         super.onCreate(icicle);
-        
+
         setContentView(R.layout.activity_authenticator);
-        
-        WebView webView = (WebView)findViewById(R.id.webViewLogin);
+
+        WebView webView = (WebView) findViewById(R.id.webViewLogin);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(new WebAppInterface(this), "Android");
         webView.loadUrl("http://151.80.131.143/securecell/auth/");
+        //webView.loadData("<h1>salut</h1>", "text/html", "UTF-8");
+        //webView.loadDataWithBaseURL("http://perdu.com", "<h1>salut</h1>", "text/html", "UTF-8", "http://monip.org");
+
+        onSaveClick(null);
     }
 
     public void onCancelClick(View v)
@@ -48,7 +49,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         String apiKey;
         boolean hasErrors = false;
 
-        tvUsername = (TextView) findViewById(R.id.uc_txt_username);
+        /*tvUsername = (TextView) findViewById(R.id.uc_txt_username);
         tvPassword = (TextView) findViewById(R.id.uc_txt_password);
         tvApiKey = (TextView) findViewById(R.id.uc_txt_api_key);
 
@@ -58,9 +59,9 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         username = tvUsername.getText().toString();
         password = tvPassword.getText().toString();
-        apiKey = tvApiKey.getText().toString();
+        apiKey = tvApiKey.getText().toString();*/
 
-        if (username.length() < 3)
+        /*if (username.length() < 3)
         {
             hasErrors = true;
             tvUsername.setBackgroundColor(Color.MAGENTA);
@@ -74,12 +75,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         {
             hasErrors = true;
             tvApiKey.setBackgroundColor(Color.MAGENTA);
-        }
-
-        if (hasErrors)
-        {
-            return;
-        }
+        }*/
 
         // Now that we have done some simple "client side" validation it
         // is time to check with the server
@@ -88,7 +84,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         // finished
 
-        String accountType = this.getIntent().getStringExtra(PARAM_AUTHTOKEN_TYPE);
+        /*String accountType = this.getIntent().getStringExtra(PARAM_AUTHTOKEN_TYPE);
         if (accountType == null)
         {
             accountType = "com.github.securecell";   //AccountAuthenticator.ACCOUNT_TYPE;
@@ -96,27 +92,20 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         AccountManager accMgr = AccountManager.get(this);
 
-        if (hasErrors)
-        {
-            // handel errors
-        }
-        else
-        {
-            // This is the magic that addes the account to the Android Account Manager
-            final Account account = new Account(username, accountType);
-            accMgr.addAccountExplicitly(account, password, null);
+        // This is the magic that addes the account to the Android Account Manager
+        final Account account = new Account("clintm", accountType);
+        accMgr.addAccountExplicitly(account, "rafale", null);
 
-            // Now we tell our caller, could be the Andreoid Account Manager or even our own application
-            // that the process was successful
+        // Now we tell our caller, could be the Andreoid Account Manager or even our own application
+        // that the process was successful
 
-            final Intent intent = new Intent();
-            intent.putExtra(AccountManager.KEY_ACCOUNT_NAME, username);
-            intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, accountType);
-            intent.putExtra(AccountManager.KEY_AUTHTOKEN, accountType);
-            this.setAccountAuthenticatorResult(intent.getExtras());
-            this.setResult(RESULT_OK, intent);
-            this.finish();
-
-        }
+        final Intent intent = new Intent();
+        intent.putExtra(AccountManager.KEY_ACCOUNT_NAME, "clintm");
+        intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, accountType);
+        intent.putExtra(AccountManager.KEY_AUTHTOKEN, accountType);
+        //this.setAccountAuthenticatorResult(intent.getExtras());
+        this.setResult(RESULT_OK, intent);
+        //this.finish();
+        finish();*/
     }
 }

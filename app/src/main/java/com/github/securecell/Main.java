@@ -150,7 +150,7 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
     @Override
     public void onBackPressed()
     {
-        super.onPause();
+        moveTaskToBack(true);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -164,6 +164,21 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         {
             startService(mVPN);
         }
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, PlaceholderFragment.newInstance(1))
+                .commit();
+    }
+    
+    @Override
+    public void onStart()
+    {
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, PlaceholderFragment.newInstance(1))
+                .commit();*/
+        super.onStart();
+        
     }
     
     @Override

@@ -50,21 +50,14 @@ public class Authenticator extends AbstractAccountAuthenticator
 
     // Ignore attempts to confirm credentials
     @Override
-    public Bundle confirmCredentials(
-            AccountAuthenticatorResponse r,
-            Account account,
-            Bundle bundle) throws NetworkErrorException
+    public Bundle confirmCredentials(AccountAuthenticatorResponse r, Account account, Bundle bundle) throws NetworkErrorException
     {
         return null;
     }
 
     // Getting an authentication token is not supported
     @Override
-    public Bundle getAuthToken(
-            AccountAuthenticatorResponse r,
-            Account account,
-            String s,
-            Bundle bundle) throws NetworkErrorException
+    public Bundle getAuthToken(AccountAuthenticatorResponse r, Account account, String s, Bundle bundle) throws NetworkErrorException
     {
         throw new UnsupportedOperationException();
     }
@@ -78,19 +71,14 @@ public class Authenticator extends AbstractAccountAuthenticator
 
     // Updating user credentials is not supported
     @Override
-    public Bundle updateCredentials(
-            AccountAuthenticatorResponse r,
-            Account account,
-            String s, Bundle bundle) throws NetworkErrorException
+    public Bundle updateCredentials(AccountAuthenticatorResponse r, Account account, String s, Bundle bundle) throws NetworkErrorException
     {
         throw new UnsupportedOperationException();
     }
 
     // Checking features for the account is not supported
     @Override
-    public Bundle hasFeatures(
-            AccountAuthenticatorResponse r,
-            Account account, String[] strings) throws NetworkErrorException
+    public Bundle hasFeatures(AccountAuthenticatorResponse r, Account account, String[] strings) throws NetworkErrorException
     {
         throw new UnsupportedOperationException();
     }
