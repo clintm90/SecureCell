@@ -30,5 +30,9 @@
     <string name="title_activity_task_manager">Gestionnaire des Tâches</string>
     <string name="loading">Chargement en cours...</string>
     <string name="title_activity_backup">Sauvegarde en Ligne</string>
+    <string name="set_backing">Programmer une sauvegarde</string>
+    <string name="parameters">Options</string>
+    <string name="title_activity_connectivity_center">Centre des Connexions</string>
+    <string name="action_wifi">Wifi</string>
 
 </resources>

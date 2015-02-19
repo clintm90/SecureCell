@@ -53,7 +53,7 @@ public class PlaceholderFragment extends Fragment
                 
                 MainListAdapter mainListAdapter = new MainListAdapter(getActivity().getApplicationContext(), enumMainList);
 
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Centre des Connexions", "Gérer votre accès au réseau", getResources().getDrawable(R.drawable.ic_action_globe), getResources().getDrawable(R.drawable.ic_action_globe_hover)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), getString(R.string.title_activity_connectivity_center), "Gérer votre accès au réseau", getResources().getDrawable(R.drawable.ic_action_globe), getResources().getDrawable(R.drawable.ic_action_globe_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), getString(R.string.title_activity_task_manager), "Protegez-vous des apps intruisives", getResources().getDrawable(R.drawable.ic_action_database), getResources().getDrawable(R.drawable.ic_action_database_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), getString(R.string.title_activity_backup), "Protegez-vous de la perte de données", getResources().getDrawable(R.drawable.ic_action_cloud), getResources().getDrawable(R.drawable.ic_action_cloud_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Données de Localisation", "Configurer l'accès au GPS", getResources().getDrawable(R.drawable.ic_action_location), getResources().getDrawable(R.drawable.ic_action_location_hover)));
@@ -72,7 +72,8 @@ public class PlaceholderFragment extends Fragment
                         switch(position)
                         {
                             case 0:
-                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                ToIntent = new Intent(getActivity().getApplicationContext(), ConnectivityCenter.class);
+                                startActivityForResult(ToIntent, 0);
                                 break;
                             
                             case 1:

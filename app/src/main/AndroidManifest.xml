@@ -148,6 +148,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.securecell.Main" />
         </activity>
+        <activity
+            android:name=".ConnectivityCenter"
+            android:label="@string/title_activity_connectivity_center"
+            android:parentActivityName=".Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.securecell.Main" />
+        </activity>
     </application>
 
 </manifest>

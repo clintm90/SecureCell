@@ -6,14 +6,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Backup extends ActionBarActivity
+public class ConnectivityCenter extends ActionBarActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_backup);
-        
+
+        setContentView(R.layout.activity_connectivity_center);
+
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
@@ -27,7 +28,7 @@ public class Backup extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu_backup, menu);
+        getMenuInflater().inflate(R.menu.menu_connectivity_center, menu);
         return true;
     }
 

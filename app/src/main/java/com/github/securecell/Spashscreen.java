@@ -25,6 +25,7 @@ public class Spashscreen extends Activity
     private KeyFactory mKeyFactory;
     private KeyPair mKP;
     private SharedPreferences mPrefsGlobal;
+    private SharedPreferences.Editor mStorageGlobal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,8 +63,10 @@ public class Spashscreen extends Activity
                 mKeyPairGenerator.initialize(512);
                 //mKeyFactory = KeyFactory.getInstance("RSA");
                 mKP = mKeyPairGenerator.generateKeyPair();
-                mPrefsGlobal.edit().putString("RSAPublicKey", mKP.getPublic().getEncoded().toString());
-                mPrefsGlobal.edit().putString("RSAPrivateKey", mKP.getPrivate().getEncoded().toString());
+                mStorageGlobal = mPrefsGlobal.edit();
+                mStorageGlobal.putString("RSAPublicKey", mKP.getPublic().getEncoded().toString());
+                mStorageGlobal.putString("RSAPrivateKey", mKP.getPrivate().getEncoded().toString());
+                mStorageGlobal.apply();
             }
             catch (Exception exception)
             {
