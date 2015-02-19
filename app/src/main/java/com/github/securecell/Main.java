@@ -164,10 +164,6 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         {
             startService(mVPN);
         }
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(1))
-                .commit();
     }
     
     @Override

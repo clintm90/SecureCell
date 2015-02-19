@@ -4,8 +4,8 @@ import android.app.Application;
 
 public class Initialize extends Application
 {
-    String SERVER_DOMAIN = "securecell.ddns.net";
-    boolean SSL = true;
+    public static String SERVER_DOMAIN = "151.80.131.143";
+    public static boolean SSL = true;
     
     @Override
     public void onCreate()

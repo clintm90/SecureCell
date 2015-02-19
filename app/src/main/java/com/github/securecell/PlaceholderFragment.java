@@ -1,12 +1,17 @@
 package com.github.securecell;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -17,6 +22,7 @@ import java.util.List;
 public class PlaceholderFragment extends Fragment
 {
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private NotificationManager mNotificationManager;
 
     public static PlaceholderFragment newInstance(int sectionNumber)
     {
@@ -32,9 +38,10 @@ public class PlaceholderFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState)
     {
         View rootView = null;
+        mNotificationManager = (NotificationManager) getActivity().getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         
         switch(getArguments().getInt(ARG_SECTION_NUMBER))
         {
@@ -47,7 +54,7 @@ public class PlaceholderFragment extends Fragment
                 MainListAdapter mainListAdapter = new MainListAdapter(getActivity().getApplicationContext(), enumMainList);
 
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Centre des Connexions", "Gérer votre accès au réseau", getResources().getDrawable(R.drawable.ic_action_globe), getResources().getDrawable(R.drawable.ic_action_globe_hover)));
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Gestionnaire des Tâches", "Protegez-vous des apps intruisives", getResources().getDrawable(R.drawable.ic_action_database), getResources().getDrawable(R.drawable.ic_action_database_hover)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), getString(R.string.title_activity_task_manager), "Protegez-vous des apps intruisives", getResources().getDrawable(R.drawable.ic_action_database), getResources().getDrawable(R.drawable.ic_action_database_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Sauvegarde en Ligne", "Protegez-vous de la perte de données", getResources().getDrawable(R.drawable.ic_action_cloud), getResources().getDrawable(R.drawable.ic_action_cloud_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Données de Localisation", "Configurer l'accès au GPS", getResources().getDrawable(R.drawable.ic_action_location), getResources().getDrawable(R.drawable.ic_action_location_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Protection Bancaire", "Protection SSL bancaire", getResources().getDrawable(R.drawable.ic_action_creditcard), getResources().getDrawable(R.drawable.ic_action_creditcard_hover)));
@@ -69,30 +76,47 @@ public class PlaceholderFragment extends Fragment
                                 break;
                             
                             case 1:
-                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                ToIntent = new Intent(getActivity().getApplicationContext(), TaskManager.class);
+                                startActivityForResult(ToIntent, 0);
                                 break;
                             
                             case 2:
                                 ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                startActivityForResult(ToIntent, 0);
                                 break;
                             
                             case 3:
                                 ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                startActivityForResult(ToIntent, 0);
                                 break;
                             
                             case 4:
                                 ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                startActivityForResult(ToIntent, 0);
                                 break;
                             
                             case 5:
-                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                final View mModelStatus = getActivity().getLayoutInflater().inflate(R.layout.alert_status, null);
+                                WebView mStatusServiceWebView = (WebView)mModelStatus.findViewById(R.id.statusServiceWebview);
+                                mStatusServiceWebView.loadUrl("http://" + Initialize.SERVER_DOMAIN + "/securecell/getServerStatus.php");
+                                builder.setView(mModelStatus);
+                                builder.setPositiveButton("Valider", new DialogInterface.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which)
+                                    {
+                                    }
+                                });
+                                builder.setCancelable(true);
+                                builder.create();
+                                builder.show();
                                 break;
                             
                             default:
-                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                //ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
                                 break;
                         }
-                        startActivityForResult(ToIntent, 0);
                     }
                 });
                 
