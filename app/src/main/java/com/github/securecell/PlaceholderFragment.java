@@ -55,7 +55,7 @@ public class PlaceholderFragment extends Fragment
 
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Centre des Connexions", "Gérer votre accès au réseau", getResources().getDrawable(R.drawable.ic_action_globe), getResources().getDrawable(R.drawable.ic_action_globe_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), getString(R.string.title_activity_task_manager), "Protegez-vous des apps intruisives", getResources().getDrawable(R.drawable.ic_action_database), getResources().getDrawable(R.drawable.ic_action_database_hover)));
-                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Sauvegarde en Ligne", "Protegez-vous de la perte de données", getResources().getDrawable(R.drawable.ic_action_cloud), getResources().getDrawable(R.drawable.ic_action_cloud_hover)));
+                mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), getString(R.string.title_activity_backup), "Protegez-vous de la perte de données", getResources().getDrawable(R.drawable.ic_action_cloud), getResources().getDrawable(R.drawable.ic_action_cloud_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Données de Localisation", "Configurer l'accès au GPS", getResources().getDrawable(R.drawable.ic_action_location), getResources().getDrawable(R.drawable.ic_action_location_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Protection Bancaire", "Protection SSL bancaire", getResources().getDrawable(R.drawable.ic_action_creditcard), getResources().getDrawable(R.drawable.ic_action_creditcard_hover)));
                 mainListAdapter.add(new EnumMain(getActivity().getApplicationContext(), "Etat du Service", "Etat de 151.80.131.143", getResources().getDrawable(R.drawable.ic_action_temperature), getResources().getDrawable(R.drawable.ic_action_temperature_hover)));
@@ -81,7 +81,7 @@ public class PlaceholderFragment extends Fragment
                                 break;
                             
                             case 2:
-                                ToIntent = new Intent(getActivity().getApplicationContext(), Browser.class);
+                                ToIntent = new Intent(getActivity().getApplicationContext(), Backup.class);
                                 startActivityForResult(ToIntent, 0);
                                 break;
                             

@@ -29,5 +29,6 @@
     <string name="status_server">Statut du Service</string>
     <string name="title_activity_task_manager">Gestionnaire des Tâches</string>
     <string name="loading">Chargement en cours...</string>
+    <string name="title_activity_backup">Sauvegarde en Ligne</string>
 
 </resources>

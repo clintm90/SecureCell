@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@color/red"
-             tools:context=".Spashscreen">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    tools:context=".Spashscreen">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -42,4 +42,13 @@
         android:textColor="@android:color/white"
         android:layout_above="@+id/progressBar"
         android:layout_centerHorizontal="true"/>
+
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="com.google.android.gms.common.SignInButton"
+        android:id="@+id/view"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="30dp"/>
 </RelativeLayout>

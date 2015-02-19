@@ -39,7 +39,7 @@ public class TaskManager extends ActionBarActivity
 
         final ProgressDialog alertDialog = ProgressDialog.show(this, "", getString(R.string.loading));
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
         alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
         {
             @Override
