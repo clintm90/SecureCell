@@ -156,6 +156,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.securecell.Main" />
         </activity>
+        <activity
+            android:name=".Task"
+            android:label="@string/title_activity_task"
+            android:parentActivityName=".TaskManager" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.securecell.TaskManager" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 package com.github.securecell;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -62,7 +60,11 @@ public class TaskManager extends ActionBarActivity
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id)
             {
-                final AlertDialog.Builder taskDialog = new AlertDialog.Builder(TaskManager.this);
+                Intent TaskIntent = new Intent(getApplicationContext(), Task.class);
+                TaskIntent.putExtra("", "");
+                startActivityForResult(TaskIntent, 0);
+                
+                /*final AlertDialog.Builder taskDialog = new AlertDialog.Builder(TaskManager.this);
                 taskDialog.setTitle(((EnumTask) view.getTag()).Title);
                 taskDialog.setItems(new String[]{"Lancer l'application", "Voir les permissions", "Nettoyer le cache", "Signaler l'application", "Supprimer l'application"}, new DialogInterface.OnClickListener()
                 {
@@ -105,7 +107,7 @@ public class TaskManager extends ActionBarActivity
                     }
                 });
                 taskDialog.create();
-                taskDialog.show();
+                taskDialog.show();*/
             }
         });
         

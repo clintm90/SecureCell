@@ -13,6 +13,16 @@
         android:textColor="@android:color/white"
         android:textSize="19sp"/>
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statusServiceProgress"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"/>
+
     <WebView
         android:layout_width="match_parent"
         android:layout_height="250dp"

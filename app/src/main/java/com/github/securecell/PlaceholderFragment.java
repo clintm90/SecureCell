@@ -11,10 +11,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,6 +102,19 @@ public class PlaceholderFragment extends Fragment
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 final View mModelStatus = getActivity().getLayoutInflater().inflate(R.layout.alert_status, null);
                                 WebView mStatusServiceWebView = (WebView)mModelStatus.findViewById(R.id.statusServiceWebview);
+                                final ProgressBar mStatusServiceProgress = (ProgressBar)mModelStatus.findViewById(R.id.statusServiceProgress);
+                                mStatusServiceWebView.setWebChromeClient(new WebChromeClient()
+                                {
+                                    @Override
+                                    public void onProgressChanged(WebView view, int progress)
+                                    {
+                                        mStatusServiceProgress.setProgress(progress);
+                                        if(progress == 100)
+                                        {
+                                            mStatusServiceProgress.setVisibility(View.GONE);
+                                        }
+                                    }
+                                });
                                 mStatusServiceWebView.loadUrl("http://" + Initialize.SERVER_DOMAIN + "/securecell/getServerStatus.php");
                                 builder.setView(mModelStatus);
                                 builder.setPositiveButton("Valider", new DialogInterface.OnClickListener()

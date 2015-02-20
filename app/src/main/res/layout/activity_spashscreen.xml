@@ -50,5 +50,6 @@
         android:id="@+id/view"
         android:layout_above="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="30dp"/>
+        android:paddingBottom="30dp"
+        android:visibility="gone"/>
 </RelativeLayout>

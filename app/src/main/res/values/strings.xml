@@ -34,5 +34,6 @@
     <string name="parameters">Options</string>
     <string name="title_activity_connectivity_center">Centre des Connexions</string>
     <string name="action_wifi">Wifi</string>
+    <string name="title_activity_task">Tâche</string>
 
 </resources>
