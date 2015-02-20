@@ -16,6 +16,8 @@ public class Task extends ActionBarActivity
         setContentView(R.layout.activity_task);
 
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        
+        setTitle(savedInstanceState.getString("name"));
     }
 
     @Override

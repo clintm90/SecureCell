@@ -61,7 +61,8 @@ public class TaskManager extends ActionBarActivity
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id)
             {
                 Intent TaskIntent = new Intent(getApplicationContext(), Task.class);
-                TaskIntent.putExtra("", "");
+                TaskIntent.putExtra("name", ((EnumTask) view.getTag()).Title);
+                TaskIntent.putExtra("package", ((EnumTask) view.getTag()).Package);
                 startActivityForResult(TaskIntent, 0);
                 
                 /*final AlertDialog.Builder taskDialog = new AlertDialog.Builder(TaskManager.this);
