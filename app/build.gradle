@@ -1,26 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'securecell'
+            keyPassword 'rafale'
+            storeFile file('C:/Users/clint/clintmourlevat.jks')
+            storePassword 'rafale'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     def versionPropsFile = file('version.properties')
-
     def Properties versionProps = new Properties()
     versionProps.load(new FileInputStream(versionPropsFile))
-
     def runTasks = gradle.startParameter.taskNames
     def versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
-
     versionProps['VERSION_BUILD'] = versionBuild.toString()
-
     versionProps.store(versionPropsFile.newWriter(), null)
-
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
-    
     defaultConfig {
         applicationId "com.github.securecell"
         minSdkVersion 15

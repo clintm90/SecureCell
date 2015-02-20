@@ -35,5 +35,7 @@
     <string name="title_activity_connectivity_center">Centre des Connexions</string>
     <string name="action_wifi">Wifi</string>
     <string name="title_activity_task">Tâche</string>
+    <string name="uninstall">Désinstaller</string>
+    <string name="alert">Alerter</string>
 
 </resources>

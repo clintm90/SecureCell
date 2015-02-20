@@ -1,13 +1,20 @@
 package com.github.securecell;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class Task extends ActionBarActivity
 {
+    ApplicationInfo AppInfo;
+    String AppName;
+    String PackageName;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -16,8 +23,14 @@ public class Task extends ActionBarActivity
         setContentView(R.layout.activity_task);
 
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+
+        AppInfo = getIntent().getParcelableExtra("info");
+        AppName = getIntent().getStringExtra("name");
+        PackageName = getIntent().getStringExtra("package");
         
-        setTitle(savedInstanceState.getString("name"));
+        setTitle(AppName);
+        
+        ((TextView)findViewById(R.id.task)).setText(AppInfo.name);
     }
 
     @Override
@@ -48,5 +61,16 @@ public class Task extends ActionBarActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void AlertPackage(MenuItem item)
+    {
+    }
+
+    public void UninstallPackage(MenuItem item)
+    {
+        Uri packageURI = Uri.parse("package:" + PackageName);
+        Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
+        startActivity(uninstallIntent);
     }
 }

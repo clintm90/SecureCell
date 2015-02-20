@@ -63,6 +63,7 @@ public class TaskManager extends ActionBarActivity
                 Intent TaskIntent = new Intent(getApplicationContext(), Task.class);
                 TaskIntent.putExtra("name", ((EnumTask) view.getTag()).Title);
                 TaskIntent.putExtra("package", ((EnumTask) view.getTag()).Package);
+                TaskIntent.putExtra("infos", ((EnumTask)view.getTag()).applicationInfo);
                 startActivityForResult(TaskIntent, 0);
                 
                 /*final AlertDialog.Builder taskDialog = new AlertDialog.Builder(TaskManager.this);
@@ -139,7 +140,7 @@ public class TaskManager extends ActionBarActivity
 
     private boolean isSystemPackage(PackageInfo pkgInfo)
     {
-        return ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) ? true : false;
+        return ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     @Override
@@ -147,6 +148,14 @@ public class TaskManager extends ActionBarActivity
     {
         setResult(RESULT_OK, new Intent().putExtra("result", 1));
         super.onBackPressed();
+    }
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(data.getExtras().getInt("result") == 1)
+        {
+            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        }
     }
 
     @Override
