@@ -19,6 +19,16 @@ import android.view.View;
 
 import com.github.securecell.service.VPNService;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /*
 filter gps autorisation
 filter usb
@@ -36,6 +46,7 @@ Wifi trust
 
 public class Main extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
 {
+    private ServerSocket Sock;
     Intent mVPN;
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
@@ -55,9 +66,12 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         mPrefsGlobal = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         mStorageGlobal = mPrefsGlobal.edit();
 
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         setContentView(R.layout.activity_main);
+
+        Thread SockThread = new Thread(new ServerThread());
+        SockThread.start();
 
         /*mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolbar != null) {
@@ -82,9 +96,9 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);*/
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout)findViewById(R.id.drawer_layout));
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
     @Override
@@ -107,7 +121,7 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
     }
-    
+
     public void OpenBrowser(View v)
     {
         Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("org.mozilla.firefox");
@@ -155,17 +169,17 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if(data.getExtras().getInt("result") == 1)
+        if (data.getExtras().getInt("result") == 1)
         {
             overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         }
-        
+
         if (resultCode == RESULT_OK)
         {
             startService(mVPN);
         }
     }
-    
+
     @Override
     public void onStart()
     {
@@ -174,9 +188,9 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
                 .replace(R.id.container, PlaceholderFragment.newInstance(1))
                 .commit();*/
         super.onStart();
-        
+
     }
-    
+
     @Override
     public void onStop()
     {
@@ -198,18 +212,104 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        switch(item.getItemId())
+        switch (item.getItemId())
         {
             case R.id.action_settings:
                 return true;
-            
+
             default:
-                return super.onOptionsItemSelected(item);                
+                return super.onOptionsItemSelected(item);
         }
     }
 
     public void ShowNavigationDrawer(MenuItem item)
     {
         mDrawerLayout.openDrawer(Gravity.LEFT);
+    }
+
+    private class ServerThread implements Runnable
+    {
+        @Override
+        public void run()
+        {
+            Socket socket = null;
+            try
+            {
+                Sock = new ServerSocket(9090);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            while (!Thread.currentThread().isInterrupted())
+            {
+                try
+                {
+                    socket = Sock.accept();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+                    String Request = null, line;
+                    while ((line = in.readLine()) != null)
+                    {
+                        Request += line;
+                    }
+
+                    //String Response = GetResponse("perdu.com", Request);
+
+                    //out.write(Response);
+                    out.write("HTTP/1.1 200 OK\r\n");
+                    out.write("Server: Squid\r\n");
+                    out.write("Via: 1.0 perdu.com\r\n");
+                    out.write("X-Forwarded-For: 89.45.123.255\r\n");
+                    out.write("Content-Type: text/html\r\n");
+                    out.write("Content-Length: 2\r\n");
+                    out.write("\r\n");
+                    out.write("ok");
+
+                    out.close();
+                    in.close();
+                    
+                    /*PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    //Toast.makeText(getApplicationContext(), in.readLine(), Toast.LENGTH_LONG).show();
+                    Log.i("ds", in.readLine());
+                    out.write("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: 13\r\nServer: Squid 1.3\r\nConnection: close\r\n\r\nhello world");
+                    out.close();*/
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        public String GetResponse(String host, String request)
+        {
+            String mRTS = null, line;
+            try
+            {
+                Socket socket = new Socket(InetAddress.getByName(host), 80);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));                
+                PrintWriter out = new PrintWriter(socket.getOutputStream());
+                out.println("GET / HTTP/1.1");
+                out.println("Host: " + host);
+                out.println("Connection: close");
+                out.println("");
+                //out.print(request);
+                out.flush();
+                while((line = in.readLine()) != null)
+                {
+                    mRTS += line;
+                }
+                in.close();
+                out.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return mRTS;
+        }
     }
 }

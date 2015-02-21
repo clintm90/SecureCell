@@ -30,7 +30,7 @@ public class Task extends ActionBarActivity
         
         setTitle(AppName);
         
-        ((TextView)findViewById(R.id.task)).setText(AppInfo.name);
+        ((TextView)findViewById(R.id.task)).setText("salut");
     }
 
     @Override
