@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -249,15 +250,18 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
                     BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-                    String Request = null, line;
-                    while ((line = in.readLine()) != null)
+                    String s;
+                    while ((s = in.readLine()) != null)
                     {
-                        Request += line;
+                        //System.out.println(s);
+                        if (s.isEmpty())
+                        {
+                            break;
+                        }
                     }
 
-                    //String Response = GetResponse("perdu.com", Request);
+                    //GetResponse("perdu.com");
 
-                    //out.write(Response);
                     out.write("HTTP/1.1 200 OK\r\n");
                     out.write("Server: Squid\r\n");
                     out.write("Via: 1.0 perdu.com\r\n");
@@ -284,7 +288,7 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
             }
         }
 
-        public String GetResponse(String host, String request)
+        public String GetResponse(String host)
         {
             String mRTS = null, line;
             try
@@ -296,11 +300,10 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
                 out.println("Host: " + host);
                 out.println("Connection: close");
                 out.println("");
-                //out.print(request);
                 out.flush();
                 while((line = in.readLine()) != null)
                 {
-                    mRTS += line;
+                    mRTS = mRTS + line;
                 }
                 in.close();
                 out.close();
@@ -308,6 +311,7 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
             catch (Exception e)
             {
                 e.printStackTrace();
+                Log.e("error", e.getLocalizedMessage());
             }
             return mRTS;
         }
