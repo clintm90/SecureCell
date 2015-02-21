@@ -99,10 +99,6 @@ public class Initialize extends Application
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter out = new PrintWriter(socket.getOutputStream());
                 out.print(request);
-                /*out.println("GET / HTTP/1.1");
-                out.println("Host: " + host);
-                out.println("Connection: close");
-                out.println("");*/
                 out.flush();
                 while((line = in.readLine()) != null)
                 {
