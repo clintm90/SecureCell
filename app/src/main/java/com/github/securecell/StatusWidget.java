@@ -8,7 +8,7 @@ import android.widget.RemoteViews;
 /**
  * Implementation of App Widget functionality.
  */
-public class LockWidget extends AppWidgetProvider
+public class StatusWidget extends AppWidgetProvider
 {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
@@ -33,11 +33,13 @@ public class LockWidget extends AppWidgetProvider
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId)
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                int appWidgetId)
     {
+
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.lock_widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.status_widget);
         views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.securecell" >
+    package="com.github.securecell"
+    android:installLocation="internalOnly" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -21,6 +22,8 @@
     <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 
     <!-- <uses-permission android:name="android.permission.INSTALL_PACKAGES" /> -->
     <application
@@ -35,14 +38,14 @@
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIWqC0riTez8l43sN7d1NCu453YD89ZaYrkIsuDw" />
 
-        <receiver android:name=".receiver.Startup">
+        <receiver android:name=".receiver.Startup" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        
+
         <service android:name=".service.ProxyServerService" />
-        
+
         <receiver android:name=".receiver.NetworkChange" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -172,6 +175,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.securecell.TaskManager" />
         </activity>
+
+        <receiver android:name=".StatusWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/status_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

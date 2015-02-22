@@ -1,5 +1,7 @@
 package com.github.securecell.proxy;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +37,9 @@ public class Request implements Serializable
                 mRTS.Fields.put(params[0], params[1]);
             }
         }
-        
+
+        Log.i("Request", value);
+
         return mRTS;
     }
     
@@ -53,7 +57,7 @@ public class Request implements Serializable
         {
             mRTS += current_line.getKey() + ": " + current_line.getValue() + "\r\n";
         }
-
+        
         mRTS += "\r\n\r\n";
         
         return mRTS;

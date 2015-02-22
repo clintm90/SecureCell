@@ -38,7 +38,7 @@ public class ProxyServer implements Runnable
                 ClientThread clientThread = new ClientThread(socket);
                 clientThread.start();
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }

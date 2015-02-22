@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.github.securecell.proxy.Request;
 import com.github.securecell.service.VPNService;
 
 import java.net.ServerSocket;
@@ -49,6 +48,7 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -62,6 +62,8 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         setContentView(R.layout.activity_main);
+
+        //Initialize.setMockLocation(getApplicationContext(), 15.387653, 73.872585, 500);
 
         /*mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolbar != null) {

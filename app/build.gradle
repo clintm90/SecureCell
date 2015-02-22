@@ -26,14 +26,16 @@ android {
         applicationId "com.github.securecell"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode versionBuild
         versionName "1.1.${versionBuild}"
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 
@@ -43,6 +45,7 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.android.support:cardview-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.3'
+    compile 'com.google.android.gms:play-services:6+'
     compile 'be.shouldit:android-proxy-library:3.0.0'
     compile 'commons-codec:commons-codec:1.10'
     compile 'org.apache.commons:commons-collections4:4.0'
@@ -50,5 +53,5 @@ dependencies {
     compile 'com.github.sogyf:goja-qrcode:0.1.2'
     compile 'de.bripkens:gravatar4java:1.2'
     compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.google.android.gms:play-services:6.+'
+    compile 'ch.acra:acra:4.6.1'
 }

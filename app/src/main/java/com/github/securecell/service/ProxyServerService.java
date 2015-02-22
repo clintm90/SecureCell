@@ -13,7 +13,7 @@ public class ProxyServerService extends Service
     {
         return null;
     }
-    
+
     @Override
     public void onCreate()
     {
@@ -24,8 +24,11 @@ public class ProxyServerService extends Service
     public int onStartCommand(Intent intent, int flags, int startId)
     {
         Thread SockThread = new Thread(new ProxyServer());
+        SockThread.setName("ProxyServer");
+        SockThread.setPriority(Thread.MAX_PRIORITY);
+        SockThread.setDaemon(true);
         SockThread.start();
-        
+
         return START_STICKY;
     }
 }
