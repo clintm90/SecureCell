@@ -35,6 +35,14 @@
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIWqC0riTez8l43sN7d1NCu453YD89ZaYrkIsuDw" />
 
+        <receiver android:name=".receiver.Startup">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        
+        <service android:name=".service.ProxyServerService" />
+        
         <receiver android:name=".receiver.NetworkChange" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />

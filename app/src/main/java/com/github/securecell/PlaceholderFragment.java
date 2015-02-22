@@ -115,7 +115,7 @@ public class PlaceholderFragment extends Fragment
                                         }
                                     }
                                 });
-                                mStatusServiceWebView.loadUrl("http://" + Initialize.SERVER_DOMAIN + "/securecell/getServerStatus.php");
+                                mStatusServiceWebView.loadUrl("http://" + Initialize.VPS_DOMAIN + "/securecell/getServerStatus.php");
                                 builder.setView(mModelStatus);
                                 builder.setPositiveButton("Valider", new DialogInterface.OnClickListener()
                                 {
