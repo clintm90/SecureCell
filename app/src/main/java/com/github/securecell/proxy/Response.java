@@ -27,7 +27,14 @@ public class Response implements Serializable
         mRTS.StatusCode = Integer.valueOf(first_line[1]);
         mRTS.StatusMessage = first_line[2];
         
-        mRTS.Content = header[1];
+        try
+        {
+            mRTS.Content = header[1];
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
         
         for(String current_line : lines)
         {

@@ -84,8 +84,8 @@ public class Initialize extends Application
                         "    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\n" +
                         "    Cache-Control: max-age=0\r\n" +
                         "    Proxy-Connection: keep-alive\r\n\r\n");*/
-                //out.print("GET / HTTP/1.1\r\nHost: " + domain + "\r\nX-Forwarded-For: 205.48.32.165\r\nConnection: close\r\n\r\n");
-                out.print(Request.Compile(ResultRequest));
+                out.print("GET / HTTP/1.1\r\nHost: " + domain + "\r\nX-Forwarded-For: 205.48.32.165\r\nConnection: close\r\n\r\n");
+                //out.print(Request.Compile(ResultRequest));
                 out.flush();
                 while((line = in.readLine()) != null)
                 {
