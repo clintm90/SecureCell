@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.github.securecell.proxy.Request;
 import com.github.securecell.service.VPNService;
 
 import java.net.ServerSocket;

@@ -1,8 +1,9 @@
 package com.github.securecell;
 
 import android.app.Application;
-import android.util.Log;
-import android.widget.Toast;
+
+import com.github.securecell.proxy.Request;
+import com.github.securecell.proxy.Response;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -48,24 +49,9 @@ public class Initialize extends Application
                 try
                 {
                     socket = Sock.accept();
-                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-
-                    String Request = "", line;
-                    while ((line = in.readLine()) != null)
-                    {
-                        Request += line + "\r\n";
-                        if (line.isEmpty())
-                        {
-                            break;
-                        }
-                    }
-
-                    String Response = ReplayRequest(Request);
-                    out.write(Response);
-
-                    out.close();
-                    in.close();
+                    
+                    ClientThread clientThread = new ClientThread(socket);
+                    clientThread.start();
                 }
                 catch (IOException e)
                 {
@@ -76,27 +62,99 @@ public class Initialize extends Application
 
         public String ReplayRequest(String request)
         {
-            String mRTS = "", line;
+            String mRTS = "", domain = null, line;
+            Response ResultResponse = null;
+            
+            Request ResultRequest = Request.Parse(request);
+            ResultRequest.Fields.put("X-Forwarded-For", "192.168.1.1");
+
+            domain = ResultRequest.Fields.get("Host");
+            
+            /*try
+            {
+                URL path = new URL(ResultRequest.Path);
+                domain = path.getHost();
+            }
+            catch (MalformedURLException e)
+            {
+                domain = ResultRequest.Path;
+                e.printStackTrace();
+            }*/
+            
             try
             {
-                Socket socket = new Socket(InetAddress.getByName("perdu.com"), 80);
+                Socket socket = new Socket(InetAddress.getByName(domain), 80);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter out = new PrintWriter(socket.getOutputStream());
-                out.print(request);
+                out.print("GET / HTTP/1.1\r\nHost: " + domain + "\r\nX-Forwarded-For: 205.48.32.165\r\nConnection: close\r\n\r\n");
                 out.flush();
                 while((line = in.readLine()) != null)
                 {
                     mRTS += line + "\r\n";
                 }
+                ResultResponse = Response.Parse(mRTS);
+                ResultResponse.Fields.put("Via", "1.1 perdu.com");
                 in.close();
                 out.close();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
-                Log.e("error", e.getLocalizedMessage());
             }
-            return mRTS;
+            return Response.Compile(ResultResponse);
+        }
+
+        public class ClientThread extends Thread
+        {
+            Socket Sock;
+            
+            public ClientThread(Socket socket)
+            {
+                Sock = socket;
+                setName(socket.getRemoteSocketAddress().toString());
+            }
+            
+            @Override
+            public void run()
+            {
+                try
+                {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(Sock.getInputStream()));
+                    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(Sock.getOutputStream()));
+
+                    //Lecture de la reqûete
+                    String Request = "", line;
+                    while ((line = in.readLine()) != null)
+                    {
+                        Request += line + "\r\n";
+                        if (line.isEmpty())
+                        {
+                            break;
+                        }
+                    }
+
+                    //Envoi de la réponse par proxy
+                    out.write(ReplayRequest(Request));
+                    
+                    out.close();
+                    in.close();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+                finally
+                {
+                    try
+                    {
+//                        Sock.close();
+                    }
+                    catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 
