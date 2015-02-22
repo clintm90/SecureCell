@@ -33,7 +33,7 @@ public class Spashscreen extends Activity
         super.onCreate(savedInstanceState);
 
         mPrefsGlobal = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        
+
         setContentView(R.layout.activity_spashscreen);
 
         MainActivity = new Intent(this, Main.class);
@@ -43,10 +43,10 @@ public class Spashscreen extends Activity
 
         final Thread ProgressThread = new Thread(Loader);
         final Thread InitThread = new Thread(Init);
-        
+
         ProgressThread.setName("ProgressThread");
         InitThread.setName("InitThread");
-        
+
         ProgressThread.start();
         InitThread.start();
     }
@@ -74,7 +74,7 @@ public class Spashscreen extends Activity
             }
         }
     };
-    
+
     final Runnable Loader = new Runnable()
     {
         public void run()
@@ -94,7 +94,6 @@ public class Spashscreen extends Activity
                     e.printStackTrace();
                 }
             }
-
             startActivity(MainActivity);
             finish();
         }

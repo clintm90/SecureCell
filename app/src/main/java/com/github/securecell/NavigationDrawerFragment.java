@@ -76,7 +76,7 @@ public class NavigationDrawerFragment extends Fragment
         // Read in the flag indicating whether or not the user has demonstrated awareness of the
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+        //mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
         if (savedInstanceState != null)
         {
@@ -173,7 +173,7 @@ public class NavigationDrawerFragment extends Fragment
                     return;
                 }
 
-                if (!mUserLearnedDrawer)
+                /*if (!mUserLearnedDrawer)
                 {
                     // The user manually opened the drawer; store this flag to prevent auto-showing
                     // the navigation drawer automatically in the future.
@@ -181,7 +181,7 @@ public class NavigationDrawerFragment extends Fragment
                     SharedPreferences sp = PreferenceManager
                             .getDefaultSharedPreferences(getActivity());
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
-                }
+                }*/
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
