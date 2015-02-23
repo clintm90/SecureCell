@@ -28,6 +28,7 @@ import java.lang.reflect.Method;
 
 public class Initialize extends Application
 {
+    public static String PACKAGE = "com.github.securecell";
     public static String VPS_DOMAIN = "151.80.131.143";
     public static int PROXY_PORT = 9090;
     public static boolean SSL = true;

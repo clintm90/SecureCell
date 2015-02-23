@@ -33,10 +33,16 @@ public class ProxyServer implements Runnable
         {
             try
             {
-                socket = Sock.accept();
+                if(Sock != null)
+                {
+                    socket = Sock.accept();
 
-                ClientThread clientThread = new ClientThread(socket);
-                clientThread.start();
+                    if(socket != null)
+                    {
+                        ClientThread clientThread = new ClientThread(socket);
+                        clientThread.start();
+                    }
+                }
             }
             catch (Exception e)
             {

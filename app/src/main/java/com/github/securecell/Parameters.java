@@ -19,6 +19,7 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 
 import java.util.List;
 
@@ -46,11 +47,12 @@ public class Parameters extends PreferenceActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        requestWindowFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
 
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-        
-        setTitle("-");
+
+        getActionBar().setDisplayShowTitleEnabled(true);
     }
 
     @Override

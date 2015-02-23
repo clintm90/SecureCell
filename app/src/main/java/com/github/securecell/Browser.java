@@ -26,7 +26,7 @@ public class Browser extends ActionBarActivity
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setBuiltInZoomControls(false);
         webView.loadUrl("http://monip.org");
-        Initialize.setProxyToWebView(webView, "151.80.131.143", 3128, "com.github.securecell");
+        Initialize.setProxyToWebView(webView, Initialize.VPS_DOMAIN, 3128, Initialize.PACKAGE);
         webView.setWebViewClient(new WebViewClient()
         {
             @Override

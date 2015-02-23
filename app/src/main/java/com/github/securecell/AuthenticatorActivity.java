@@ -3,7 +3,9 @@ package com.github.securecell;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class AuthenticatorActivity extends ActionBarActivity
@@ -24,10 +26,25 @@ public class AuthenticatorActivity extends ActionBarActivity
 
         setContentView(R.layout.activity_authenticator);
 
+        final ProgressBar mProgress = (ProgressBar) findViewById(R.id.progressBar);
         WebView webView = (WebView) findViewById(R.id.webViewLogin);
+        
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new WebAppInterface(this), "Android");
         webView.loadUrl("http://151.80.131.143/securecell/auth/");
+        webView.setWebChromeClient(new WebChromeClient()
+        {
+            @Override
+            public void onProgressChanged(WebView view, int progress)
+            {
+                mProgress.setProgress(progress);
+                if(progress == 100)
+                {
+                    mProgress.setVisibility(View.GONE);
+                }
+            }
+        });
+        Initialize.setProxyToWebView(webView, Initialize.VPS_DOMAIN, 3128, Initialize.PACKAGE);
         //webView.loadData("<h1>salut</h1>", "text/html", "UTF-8");
         //webView.loadDataWithBaseURL("http://perdu.com", "<h1>salut</h1>", "text/html", "UTF-8", "http://monip.org");
 

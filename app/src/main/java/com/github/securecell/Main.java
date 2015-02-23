@@ -48,7 +48,6 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -62,6 +61,8 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         setContentView(R.layout.activity_main);
+        
+        //startActivity(new Intent(Settings.ACTION_ADD_ACCOUNT));
 
         //Initialize.setMockLocation(getApplicationContext(), 15.387653, 73.872585, 500);
 
