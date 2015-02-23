@@ -11,17 +11,16 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Options</string>
     <string name="noset">.</string>
     <string name="appinstalled">TrackCell : Nouvelle application installé</string>
     <string name="appinstalledwouldinternet">Autorizer l\'application à se connecter à internet ?</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
-    <string name="settings">Options</string>
     <string name="share">Partager</string>
     <string name="more">En savoir plus</string>
     <string name="about">A Propos…</string>
-    <string name="title_activity_browser">Browser</string>
+    <string name="title_activity_browser">Navigation sécurisé</string>
     <string name="hello_world">Hello world!</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
@@ -31,7 +30,6 @@
     <string name="loading">Chargement en cours...</string>
     <string name="title_activity_backup">Sauvegarde en Ligne</string>
     <string name="set_backing">Programmer une sauvegarde</string>
-    <string name="parameters">Options</string>
     <string name="title_activity_connectivity_center">Centre des Connexions</string>
     <string name="action_wifi">Wifi</string>
     <string name="title_activity_task">Tâche</string>

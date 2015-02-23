@@ -122,6 +122,12 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         startActivity(intent);
     }
 
+    public void Parameters(MenuItem item)
+    {
+        Intent ParametersActivity = new Intent(this, Parameters.class);
+        startActivityForResult(ParametersActivity, 0);
+    }
+
     public void onClick(View v)
     {
         Intent intent = VpnService.prepare(getApplicationContext());

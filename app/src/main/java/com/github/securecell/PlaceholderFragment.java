@@ -116,6 +116,7 @@ public class PlaceholderFragment extends Fragment
                                     }
                                 });
                                 mStatusServiceWebView.loadUrl("http://" + Initialize.VPS_DOMAIN + "/securecell/getServerStatus.php");
+                                Initialize.setProxyToWebView(mStatusServiceWebView, Initialize.VPS_DOMAIN, 3128, "com.github.securecell");
                                 builder.setView(mModelStatus);
                                 builder.setPositiveButton("Valider", new DialogInterface.OnClickListener()
                                 {

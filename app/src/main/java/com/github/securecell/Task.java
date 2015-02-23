@@ -72,5 +72,6 @@ public class Task extends ActionBarActivity
         Uri packageURI = Uri.parse("package:" + PackageName);
         Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
         startActivity(uninstallIntent);
+        finish();
     }
 }
