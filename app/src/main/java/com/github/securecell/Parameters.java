@@ -52,7 +52,7 @@ public class Parameters extends PreferenceActivity
 
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
-        getActionBar().setDisplayShowTitleEnabled(true);
+        //getActionBar().setDisplayShowTitleEnabled(true);
     }
 
     @Override

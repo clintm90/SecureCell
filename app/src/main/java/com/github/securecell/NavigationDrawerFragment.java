@@ -2,6 +2,7 @@ package com.github.securecell;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -106,7 +107,17 @@ public class NavigationDrawerFragment extends Fragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                selectItem(position);
+                switch(position)
+                {
+                    case 4:
+                        Intent SettingsActivity = new Intent(getActivity(), Parameters.class);
+                        startActivityForResult(SettingsActivity, 0);
+                        break;
+                    
+                    default:
+                        selectItem(position);
+                        break;
+                }
             }
         });
 

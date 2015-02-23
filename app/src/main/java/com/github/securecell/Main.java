@@ -28,12 +28,13 @@ listen 22 port
 listen opened port + close port
 override gps
 filter mcc
-black list
+filter unknow caller + black list
 fingerprint or code
 rsa sms
 trust network + ip + dns
 trust app + decompile dex + permission
 Wifi trust
+security permission gauge
 */
 
 public class Main extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
