@@ -109,7 +109,12 @@ public class NavigationDrawerFragment extends Fragment
             {
                 switch(position)
                 {
-                    case 4:
+                    case 2:
+                        Intent FileManagerActivity = new Intent(getActivity(), FileManager.class);
+                        startActivityForResult(FileManagerActivity, 0);
+                        break;
+                    
+                    case 5:
                         Intent SettingsActivity = new Intent(getActivity(), Parameters.class);
                         startActivityForResult(SettingsActivity, 0);
                         break;
@@ -124,9 +129,10 @@ public class NavigationDrawerFragment extends Fragment
         NavigationDrawerAdapter mNavigationDrawerAdapter = new NavigationDrawerAdapter(getActivity(), NAVIGATIONDRAWERLIST);
         
         mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Accueil", getActivity().getResources().getDrawable(R.drawable.ic_action_home)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Pare-feu", getActivity().getResources().getDrawable(R.drawable.ic_action_firewall)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Filter les appels", getActivity().getResources().getDrawable(R.drawable.ic_action_firewall)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Gestionnaire de fichiers", getActivity().getResources().getDrawable(R.drawable.ic_action_directory)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Navigation sécurisé", getActivity().getResources().getDrawable(R.drawable.ic_action_browser)));
         mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Chiffrement", getActivity().getResources().getDrawable(R.drawable.ic_action_lock)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Sauvegarde", getActivity().getResources().getDrawable(R.drawable.ic_action_cloud)));
         mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Options", getActivity().getResources().getDrawable(R.drawable.ic_action_parameters)));
         mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "A Propos&#8230;", getActivity().getResources().getDrawable(R.drawable.ic_action_info)));
         

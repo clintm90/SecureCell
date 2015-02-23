@@ -6,7 +6,7 @@
     android:paddingTop="10dp">
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/noset"
         android:id="@+id/model_navigationdrawer_name"

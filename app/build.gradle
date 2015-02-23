@@ -56,4 +56,5 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'ch.acra:acra:4.6.1'
     compile 'me.tatarka.support:jobscheduler:0.1.1'
+    compile 'com.shamanland:fab:0.0.8'
 }

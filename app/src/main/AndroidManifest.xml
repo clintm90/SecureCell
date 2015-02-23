@@ -193,7 +193,15 @@
         <activity
             android:name=".Parameters"
             android:label="@string/title_activity_parameters"
-            android:theme="@style/AppTheme"
+            android:parentActivityName=".Main"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.securecell.Main" />
+        </activity>
+        <activity
+            android:name=".FileManager"
+            android:label="@string/myfiles"
             android:parentActivityName=".Main" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

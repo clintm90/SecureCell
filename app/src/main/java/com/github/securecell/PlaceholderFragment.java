@@ -109,7 +109,7 @@ public class PlaceholderFragment extends Fragment
                                     public void onProgressChanged(WebView view, int progress)
                                     {
                                         mStatusServiceProgress.setProgress(progress);
-                                        if(progress == 100)
+                                        if (progress == 100)
                                         {
                                             mStatusServiceProgress.setVisibility(View.GONE);
                                         }
