@@ -107,6 +107,8 @@ public class NavigationDrawerFragment extends Fragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
+
+                mDrawerLayout.closeDrawer(mFragmentContainerView);
                 switch(position)
                 {
                     case 2:
@@ -128,13 +130,13 @@ public class NavigationDrawerFragment extends Fragment
 
         NavigationDrawerAdapter mNavigationDrawerAdapter = new NavigationDrawerAdapter(getActivity(), NAVIGATIONDRAWERLIST);
         
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Accueil", getActivity().getResources().getDrawable(R.drawable.ic_action_home)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Filter les appels", getActivity().getResources().getDrawable(R.drawable.ic_action_firewall)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Gestionnaire de fichiers", getActivity().getResources().getDrawable(R.drawable.ic_action_directory)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Navigation sécurisé", getActivity().getResources().getDrawable(R.drawable.ic_action_browser)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Chiffrement", getActivity().getResources().getDrawable(R.drawable.ic_action_lock)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Options", getActivity().getResources().getDrawable(R.drawable.ic_action_parameters)));
-        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "A Propos&#8230;", getActivity().getResources().getDrawable(R.drawable.ic_action_info)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Accueil", getActivity().getResources().getDrawable(R.drawable.ic_action_house)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Filter les appels", getActivity().getResources().getDrawable(R.drawable.ic_action_filter)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Gestionnaire de fichiers", getActivity().getResources().getDrawable(R.drawable.ic_action_folder_open)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Navigation sécurisé", getActivity().getResources().getDrawable(R.drawable.ic_action_globe)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Chiffrement", getActivity().getResources().getDrawable(R.drawable.ic_action_lock_closed)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "Options", getActivity().getResources().getDrawable(R.drawable.ic_action_sort_1)));
+        mNavigationDrawerAdapter.add(new EnumNavigationDrawer(getActivity(), "A Propos&#8230;", getActivity().getResources().getDrawable(R.drawable.ic_action_help)));
         
         mDrawerListView.setAdapter(mNavigationDrawerAdapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
