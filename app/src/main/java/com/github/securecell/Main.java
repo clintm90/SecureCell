@@ -190,6 +190,12 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         super.onStart();
 
     }
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        mDrawerLayout.closeDrawers();
+    }
 
     @Override
     public void onStop()

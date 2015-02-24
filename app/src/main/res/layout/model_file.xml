@@ -4,7 +4,7 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/model_tasklist_title"
+        android:id="@+id/model_filelist_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="0dp"
@@ -17,13 +17,13 @@
         android:textColor="#333333"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/model_tasklist_icon"
-        android:layout_toEndOf="@+id/model_tasklist_icon"
+        android:layout_toRightOf="@+id/model_filelist_icon"
+        android:layout_toEndOf="@+id/model_filelist_icon"
         android:lines="1"
         android:ellipsize="end"/>
 
     <TextView
-        android:id="@+id/model_tasklist_package"
+        android:id="@+id/model_filelist_description"
         android:text="@string/noset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,21 +33,22 @@
         android:paddingRight="12dp"
         android:layout_alignWithParentIfMissing="true"
         android:paddingTop="3dp"
-        android:layout_below="@+id/model_tasklist_title"
-        android:layout_alignLeft="@+id/model_tasklist_title"
-        android:layout_alignStart="@+id/model_tasklist_title"
+        android:layout_below="@+id/model_filelist_title"
+        android:layout_alignLeft="@+id/model_filelist_title"
+        android:layout_alignStart="@+id/model_filelist_title"
         android:paddingBottom="7dp"/>
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/model_tasklist_icon"
+        android:id="@+id/model_filelist_icon"
         android:src="@drawable/ic_launcher"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="7dp"
-        android:layout_marginBottom="7dp"/>
+        android:layout_marginBottom="7dp"
+        android:padding="5dp"/>
 
 </RelativeLayout>

@@ -5,15 +5,30 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileManager extends ActionBarActivity
 {
+    private ListView MainContainer;
+    private List<EnumFile> enumFile = new ArrayList<EnumFile>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_file_manager);
+        
+        MainContainer = (ListView)findViewById(R.id.fileManager);
+        
+        FileManagerAdapter fileManagerAdapter = new FileManagerAdapter(this, enumFile);
+        
+        fileManagerAdapter.add(new EnumFile(this, "salut", "salut", getResources().getDrawable(R.drawable.ic_file_directory)));
+        
+        MainContainer.setAdapter(fileManagerAdapter);
 
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
