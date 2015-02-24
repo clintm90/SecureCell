@@ -33,10 +33,12 @@ public class FileManagerAdapter extends ArrayAdapter<EnumFile>
         ImageView mModelFileIcon = (ImageView)rowView.findViewById(R.id.model_filelist_icon);
         TextView mModelFileTitle = (TextView)rowView.findViewById(R.id.model_filelist_title);
         TextView mModelFileDescription = (TextView)rowView.findViewById(R.id.model_filelist_description);
+        TextView mModelFileSize = (TextView)rowView.findViewById(R.id.model_filelist_size);
 
         mModelFileIcon.setImageDrawable(values.get(position).Icon);
         mModelFileTitle.setText(values.get(position).Title);
         mModelFileDescription.setText(values.get(position).Description);
+        mModelFileSize.setText(values.get(position).Size);
 
         return rowView;
     }

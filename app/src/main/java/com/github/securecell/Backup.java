@@ -7,7 +7,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
+import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 import com.github.securecell.service.ScheduleBackup;
+
+import java.util.Date;
 
 import me.tatarka.support.job.JobInfo;
 import me.tatarka.support.job.JobScheduler;
@@ -38,6 +42,31 @@ public class Backup extends ActionBarActivity
 
         jobScheduler.schedule(job);
     }
+
+    public void PickDateBackup(MenuItem item)
+    {
+        new SlideDateTimePicker.Builder(getSupportFragmentManager())
+                .setListener(listener)
+                .setInitialDate(new Date())
+                .build()
+                .show();
+    }
+
+    private SlideDateTimeListener listener = new SlideDateTimeListener() {
+
+        @Override
+        public void onDateTimeSet(Date date)
+        {
+            // Do something with the date. This Date object contains
+            // the date and time that the user has selected.
+        }
+
+        @Override
+        public void onDateTimeCancel()
+        {
+            // Overriding onDateTimeCancel() is optional.
+        }
+    };
 
     @Override
     public void onBackPressed()

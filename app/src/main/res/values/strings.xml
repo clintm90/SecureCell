@@ -39,5 +39,7 @@
     <string name="newfile">Ajouter un fichier</string>
     <string name="newdirectory">Ajouter un dossier</string>
     <string name="myfiles">Mes fichiers</string>
+    <string name="crash_dialog_text">SecureCell vient de crasher !</string>
+    <string name="crash_dialog_prompt">Voulez-vous envoyer un commentaire sur le crash ?</string>
 
 </resources>

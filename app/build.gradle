@@ -4,9 +4,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'securecell'
-            keyPassword 'rafale'
+            keyPassword KEY_PASSWORD
             storeFile file('C:/Users/clint/clintmourlevat.jks')
-            storePassword 'rafale'
+            storePassword KEYSTORE_PASSWORD
         }
     }
     compileSdkVersion 21
@@ -31,14 +31,19 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     productFlavors {
     }
-}
 
+    repositories {
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -57,4 +62,5 @@ dependencies {
     compile 'ch.acra:acra:4.6.1'
     compile 'me.tatarka.support:jobscheduler:0.1.1'
     compile 'com.shamanland:fab:0.0.8'
+    compile 'com.github.jjobes:SlideDateTimePicker:v1.0.2'
 }
