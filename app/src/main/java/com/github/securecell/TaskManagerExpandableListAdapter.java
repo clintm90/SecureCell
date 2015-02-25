@@ -54,9 +54,6 @@ public class TaskManagerExpandableListAdapter extends BaseExpandableListAdapter
         mModelTaskTitle.setText(((EnumTask)getChild(groupPosition, childPosition)).Title);
         mModelTaskPackage.setText(((EnumTask)getChild(groupPosition, childPosition)).Package);
         mModelTaskSize.setText(((EnumTask)getChild(groupPosition, childPosition)).Size);
-        //mResourcesListPerson.setText(String.valueOf(((EnumResource)getChild(groupPosition, childPosition)).Person));
-
-        //Main.InflateResourceItem(this._context, mResourcesListState, mResourcesListPerson, ((EnumResource)getChild(groupPosition, childPosition)).ID);
 
         convertView.setTag(getChild(groupPosition, childPosition));
         return convertView;

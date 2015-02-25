@@ -74,14 +74,14 @@ public class TaskManager extends ActionBarActivity
                 Intent TaskIntent = new Intent(getApplicationContext(), Task.class);
                 TaskIntent.putExtra("name", ((EnumTask) v.getTag()).Title);
                 TaskIntent.putExtra("package", ((EnumTask) v.getTag()).Package);
-                TaskIntent.putExtra("infos", ((EnumTask)v.getTag()).applicationInfo);
+                TaskIntent.putExtra("infos", ((EnumTask) v.getTag()).applicationInfo);
                 startActivityForResult(TaskIntent, 0);
                 return false;
             }
         });
 
-        listDataHeader.add("Applications en cours...");
-        listDataHeader.add("Autres applications");
+        listDataHeader.add(getString(R.string.running_apps));
+        listDataHeader.add(getString(R.string.others_apps));
 
         AsyncTask<Void, Void, TaskManagerExpandableListAdapter> MainTask = new AsyncTask<Void, Void, TaskManagerExpandableListAdapter>()
         {
@@ -130,8 +130,22 @@ public class TaskManager extends ActionBarActivity
             {
                 alertDialog.dismiss();
                 mListView.setAdapter(input);
-                mListView.expandGroup(0);
-                mListView.expandGroup(1);
+                try
+                {
+                    mListView.expandGroup(0);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+                try
+                {
+                    mListView.expandGroup(1);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
         };
         MainTask.execute();

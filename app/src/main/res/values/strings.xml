@@ -41,5 +41,7 @@
     <string name="myfiles">Mes fichiers</string>
     <string name="crash_dialog_text">SecureCell vient de crasher !</string>
     <string name="crash_dialog_prompt">Voulez-vous envoyer un commentaire sur le crash ?</string>
+    <string name="running_apps">Applications en cours...</string>
+    <string name="others_apps">Autres applications</string>
 
 </resources>
