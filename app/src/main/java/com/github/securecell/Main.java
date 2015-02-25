@@ -171,7 +171,6 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
     {
         if (data.getExtras().getInt("result") == 1)
         {
-            //mDrawerLayout.closeDrawers();
             overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         }
 

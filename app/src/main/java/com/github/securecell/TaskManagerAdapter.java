@@ -34,10 +34,12 @@ public class TaskManagerAdapter extends ArrayAdapter<EnumTask>
         ImageView mModelTaskIcon = (ImageView)rowView.findViewById(R.id.model_tasklist_icon);
         TextView mModelTaskTitle = (TextView)rowView.findViewById(R.id.model_tasklist_title);
         TextView mModelTaskPackage = (TextView)rowView.findViewById(R.id.model_tasklist_package);
+        TextView mModelTaskSize = (TextView)rowView.findViewById(R.id.model_tasklist_size);
 
         mModelTaskIcon.setImageDrawable(values.get(position).Icon);
         mModelTaskTitle.setText(values.get(position).Title);
         mModelTaskPackage.setText(values.get(position).Package);
+        mModelTaskSize.setText(values.get(position).Size);
 
         return rowView;
     }

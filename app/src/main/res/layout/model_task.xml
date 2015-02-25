@@ -36,7 +36,11 @@
         android:layout_below="@+id/model_tasklist_title"
         android:layout_alignLeft="@+id/model_tasklist_title"
         android:layout_alignStart="@+id/model_tasklist_title"
-        android:paddingBottom="7dp"/>
+        android:paddingBottom="7dp"
+        android:layout_toLeftOf="@+id/model_tasklist_size"
+        android:layout_toStartOf="@+id/model_tasklist_size"
+        android:lines="1"
+        android:ellipsize="end"/>
 
     <ImageView
         android:layout_width="50dp"
@@ -49,5 +53,24 @@
         android:layout_marginLeft="7dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/model_tasklist_size"
+        android:text="@string/noset"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/tertiary_text_dark"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:paddingTop="3dp"
+        android:paddingBottom="7dp"
+        android:layout_below="@+id/model_tasklist_title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:ellipsize="end"
+        android:lines="1"
+        android:gravity="right"/>
 
 </RelativeLayout>

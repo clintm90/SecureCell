@@ -95,6 +95,7 @@
     <orderEntry type="library" exported="" name="commons-collections4-4.0" level="project" />
     <orderEntry type="library" exported="" name="core-3.1.0" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="guava-18.0" level="project" />
     <orderEntry type="library" exported="" name="javase-3.1.0" level="project" />

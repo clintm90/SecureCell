@@ -138,6 +138,7 @@ public class PlaceholderFragment extends Fragment
                 });
                 
                 MainContainer.setAdapter(mainListAdapter);
+                mainListAdapter.notifyDataSetChanged();
                 return rootView;
             
             default:

@@ -54,6 +54,7 @@ dependencies {
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'be.shouldit:android-proxy-library:3.0.0'
     compile 'commons-codec:commons-codec:1.10'
+    compile 'commons-io:commons-io:2.4'
     compile 'org.apache.commons:commons-collections4:4.0'
     compile 'com.googlecode.libphonenumber:libphonenumber:6.3'
     compile 'com.github.sogyf:goja-qrcode:0.1.2'
