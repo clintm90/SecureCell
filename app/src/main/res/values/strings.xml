@@ -19,7 +19,7 @@
     <string name="no">Non</string>
     <string name="share">Partager</string>
     <string name="more">En savoir plus</string>
-    <string name="about">A Propos…</string>
+    <string name="about">"A Propos&#8230;</string>
     <string name="title_activity_browser">Navigation sécurisé</string>
     <string name="hello_world">Hello world!</string>
     <string name="appwidget_text">EXAMPLE</string>
@@ -45,5 +45,6 @@
     <string name="others_apps">Autres applications</string>
     <string name="title_activity_call_manager">CallManager</string>
     <string name="filter_calls">Filtrer les appels</string>
+    <string name="home">Accueil</string>
 
 </resources>
