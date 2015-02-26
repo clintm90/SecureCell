@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tools:LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
       android:orientation="vertical"
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      android:padding="12dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView2"/>
-</tools:LinearLayout>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="A Propos..."
+        android:id="@+id/textView4"
+        android:textColor="#333333"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SecureCell est une application qui vous permet de mieux gérer la sécurité autour de votre téléphone Android."
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="2dp"
+        android:paddingTop="5dp"/>
+
+</RelativeLayout>

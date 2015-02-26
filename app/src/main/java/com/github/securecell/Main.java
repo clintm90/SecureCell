@@ -62,33 +62,6 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         setContentView(R.layout.activity_main);
-        
-        //startActivity(new Intent(Settings.ACTION_ADD_ACCOUNT));
-
-        //Initialize.setMockLocation(getApplicationContext(), 15.387653, 73.872585, 500);
-
-        /*mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (mToolbar != null) {
-            mToolbar.setTitle("Navigation Drawer");
-            setSupportActionBar(mToolbar);
-        }
-        mToolbar.setNavigationIcon(R.drawable.ic_launcher);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.app_name, R.string.app_name)
-        {
-            @Override
-            public void onDrawerClosed(View drawerView)
-            {
-                super.onDrawerClosed(drawerView);
-            }
-            @Override
-            public void onDrawerOpened(View drawerView)
-            {
-                super.onDrawerOpened(drawerView);
-            }
-        };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);*/
 
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 

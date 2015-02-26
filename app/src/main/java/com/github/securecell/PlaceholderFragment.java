@@ -141,6 +141,10 @@ public class PlaceholderFragment extends Fragment
                 mainListAdapter.notifyDataSetChanged();
                 return rootView;
             
+            case 7:
+                rootView = inflater.inflate(R.layout.fragment_about, container, false);
+                return rootView;
+            
             default:
                 rootView = inflater.inflate(R.layout.fragment_about, container, false);
                 return rootView;

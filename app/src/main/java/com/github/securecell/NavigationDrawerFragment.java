@@ -116,6 +116,11 @@ public class NavigationDrawerFragment extends Fragment
                         startActivityForResult(FileManagerActivity, 0);
                         break;
                     
+                    case 3:
+                        Intent BrowserActivity = new Intent(getActivity(), Browser.class);
+                        startActivityForResult(BrowserActivity, 0);
+                        break;
+                    
                     case 5:
                         Intent SettingsActivity = new Intent(getActivity(), Parameters.class);
                         startActivityForResult(SettingsActivity, 0);
