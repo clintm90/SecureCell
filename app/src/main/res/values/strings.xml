@@ -25,7 +25,7 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="title_activity_authenticator">Connexion à SecureCell</string>
-    <string name="status_server">Statut du Service</string>
+    <string name="status_server">Etat du Service</string>
     <string name="title_activity_task_manager">Gestionnaire des Tâches</string>
     <string name="loading">Chargement en cours...</string>
     <string name="title_activity_backup">Sauvegarde en Ligne</string>
@@ -46,5 +46,7 @@
     <string name="title_activity_call_manager">CallManager</string>
     <string name="filter_calls">Filtrer les appels</string>
     <string name="home">Accueil</string>
+    <string name="bank_protect">Protection Bancaire</string>
+    <string name="gps_data">Données de Localisation</string>
 
 </resources>
