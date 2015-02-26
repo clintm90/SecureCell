@@ -111,6 +111,11 @@ public class NavigationDrawerFragment extends Fragment
                 mDrawerLayout.closeDrawer(mFragmentContainerView);
                 switch(position)
                 {
+                    case 1:
+                        Intent CallCenterActivity = new Intent(getActivity(), CallManager.class);
+                        startActivityForResult(CallCenterActivity, 0);
+                        break;
+                    
                     case 2:
                         Intent FileManagerActivity = new Intent(getActivity(), FileManager.class);
                         startActivityForResult(FileManagerActivity, 0);

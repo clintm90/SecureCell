@@ -208,6 +208,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.securecell.Main" />
         </activity>
+        <activity
+            android:name=".CallManager"
+            android:label="@string/filter_calls"
+            android:parentActivityName=".Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.securecell.Main" />
+        </activity>
     </application>
 
 </manifest>
