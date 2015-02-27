@@ -102,6 +102,8 @@ public class Initialize extends Application
         newLocation.setLatitude(latitude);
         newLocation.setLongitude(longitude);
         newLocation.setAccuracy(accuracy);
+        newLocation.setTime(5);
+        newLocation.setElapsedRealtimeNanos(5);
 
         lm.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
 

@@ -58,7 +58,7 @@ public class ProxyServer implements Runnable
 
         Request ResultRequest = Request.Parse(request);
         ResultRequest.Fields.put("X-Forwarded-For", "192.168.1.1");
-
+        
         domain = ResultRequest.Fields.get("Host");
 
         try
@@ -122,7 +122,7 @@ public class ProxyServer implements Runnable
                         break;
                     }
                 }
-
+                
                 //Envoi de la réponse par proxy
                 out.write(ReplayRequest(Request));
 

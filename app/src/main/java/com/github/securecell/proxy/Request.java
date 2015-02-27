@@ -38,7 +38,7 @@ public class Request implements Serializable
             }
         }
 
-        Log.i("Request", value);
+        Log.w("Request", value);
 
         return mRTS;
     }
