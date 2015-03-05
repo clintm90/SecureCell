@@ -3,13 +3,17 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.github.securecell.ConnectivityCenter">
 
-    <item android:id="@+id/action_wifi"
-          android:title="@string/action_wifi"
-          android:icon="@drawable/ic_action_wifib"
-          app:showAsAction="always"/>
-    
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          android:orderInCategory="100"
-          app:showAsAction="never"/>
+    <item android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+          android:title="@string/more"
+          app:showAsAction="ifRoom|withText">
+        <menu>
+            <item android:id="@+id/action_netmonitor"
+                  android:title="Monitoring réseau"
+                  app:showAsAction="always" />
+            
+            <item android:id="@+id/action_getip"
+                  android:title="Obtenir l'adresse IP distante"
+                  app:showAsAction="always" />
+        </menu>
+    </item>
 </menu>

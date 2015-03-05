@@ -63,19 +63,18 @@ public class ProxyServer implements Runnable
 
         try
         {
-            Socket socket = new Socket(InetAddress.getByName(domain), 80);
+            Socket socket = new Socket(InetAddress.getByName("www.monip.org"), 80);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream());
-                /*out.print("GET http://www.monip.org/ HTTP/1.1\r\n" +
-                        "    Accept-Language: fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4\r\n" +
-                        "    Host: www.monip.org\r\n" +
-                        "    Accept-Encoding: gzip, deflate, sdch\r\n" +
-                        "    X-Forwarded-For: 192.168.1.1\r\n" +
-                        "    User-Agent: Mozilla/5.0 (Linux; Android 4.2.2; OZZY Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.93 Mobile Safari/537.36\\n" +
-                        "    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\n" +
-                        "    Cache-Control: max-age=0\r\n" +
-                        "    Proxy-Connection: keep-alive\r\n\r\n");*/
-            out.print("GET / HTTP/1.1\r\nHost: " + domain + "\r\nX-Forwarded-For: 205.48.32.165\r\nConnection: close\r\n\r\n");
+            /*out.print("GET http://www.monip.org/ HTTP/1.1\r\n" +
+                        "Accept-Language: fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4\r\n" +
+                        "Host: www.monip.org\r\n" +
+                        "X-Forwarded-For: 192.168.1.1\r\n" +
+                        "User-Agent: Mozilla/5.0 (Linux; Android 4.2.2; OZZY Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.93 Mobile Safari/537.36\r\n" +
+                        "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\n" +
+                        "Cache-Control: max-age=0\r\n" +
+                        "Proxy-Connection: keep-alive\r\n\r\n");*/
+            out.print("GET http://www.monip.org/ HTTP/1.1\r\nHost: www.monip.org\r\nAccept-Language: fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\nX-Forwarded-For: 205.48.32.165\r\nUser-Agent: Mozilla/5.0 (Linux; Android 4.2.2; OZZY Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.93 Mobile Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\nConnection: close\r\n\r\n");
             //out.print(Request.Compile(ResultRequest));
             out.flush();
             while ((line = in.readLine()) != null)

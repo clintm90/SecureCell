@@ -8,6 +8,8 @@ import com.github.securecell.proxy.ProxyServer;
 
 public class ProxyServerService extends Service
 {
+    private Thread SockThread;
+
     @Override
     public IBinder onBind(Intent intent)
     {
@@ -17,18 +19,24 @@ public class ProxyServerService extends Service
     @Override
     public void onCreate()
     {
+        SockThread = new Thread(new ProxyServer());
+        SockThread.setName("ProxyServer");
+        SockThread.setPriority(Thread.MAX_PRIORITY);
+        SockThread.setDaemon(true);
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        Thread SockThread = new Thread(new ProxyServer());
-        SockThread.setName("ProxyServer");
-        SockThread.setPriority(Thread.MAX_PRIORITY);
-        SockThread.setDaemon(true);
         SockThread.start();
-
         return START_STICKY;
+    }
+    
+    @Override
+    public void onDestroy()
+    {
+        SockThread.interrupt();
+        super.onDestroy();
     }
 }

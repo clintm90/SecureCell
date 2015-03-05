@@ -17,6 +17,7 @@ import android.webkit.WebView;
 
 import com.github.securecell.service.ProxyServerService;
 
+import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 import org.apache.http.HttpHost;
 
@@ -28,7 +29,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @ReportsCrashes(
-        formUri = "http://151.80.131.143/reportpath"
+        formUri = "http://151.80.131.143/securecell/backend.php"
 )
 
 public class Initialize extends Application
@@ -44,7 +45,7 @@ public class Initialize extends Application
     {
         super.onCreate();
 
-        //ACRA.init(this);
+        ACRA.init(this);
 
         LaunchProxyServer(this);
     }
