@@ -27,6 +27,7 @@ public class FileManager extends ActionBarActivity
         FileManagerAdapter fileManagerAdapter = new FileManagerAdapter(this, enumFile);
         
         fileManagerAdapter.add(new EnumFile(this, "Documents", "/sdcard/data/documents", getResources().getDrawable(R.drawable.ic_file_directory), "3,4Mo"));
+        fileManagerAdapter.add(new EnumFile(this, "Sample1.txt", "/sdcard/data/documents/sample1.txt", getResources().getDrawable(R.drawable.ic_file_text), "1,2Mo"));
         
         MainContainer.setAdapter(fileManagerAdapter);
 

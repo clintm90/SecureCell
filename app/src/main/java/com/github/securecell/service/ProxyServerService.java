@@ -29,7 +29,10 @@ public class ProxyServerService extends Service
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        SockThread.start();
+        if(!SockThread.isAlive())
+        {
+            SockThread.start();
+        }
         return START_STICKY;
     }
     

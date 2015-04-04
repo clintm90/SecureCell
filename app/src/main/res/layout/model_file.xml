@@ -38,7 +38,9 @@
         android:layout_alignStart="@+id/model_filelist_title"
         android:paddingBottom="7dp"
         android:layout_toLeftOf="@+id/model_filelist_size"
-        android:layout_toStartOf="@+id/model_filelist_size"/>
+        android:layout_toStartOf="@+id/model_filelist_size"
+        android:ellipsize="start"
+        android:lines="1"/>
 
     <ImageView
         android:layout_width="50dp"
