@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.webkit.WebView;
-import com.lechucksoftware.proxy.*;
 
 import com.github.securecell.service.ProxyServerService;
 
@@ -47,9 +46,6 @@ public class Initialize extends Application
         super.onCreate();
 
         ACRA.init(this);
-        
-        com.lechucksoftware.proxy.lib.ProxySettings;
-        WifiNet
 
         LaunchProxyServer(this);
     }

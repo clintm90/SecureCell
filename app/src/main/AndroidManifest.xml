@@ -37,6 +37,9 @@
         android:persistent="true"
         android:sharedUserId="android.uid.system"
         android:theme="@style/AppTheme" >
+
+        <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />
+
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIWqC0riTez8l43sN7d1NCu453YD89ZaYrkIsuDw" />

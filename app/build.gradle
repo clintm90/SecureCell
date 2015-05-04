@@ -64,5 +64,6 @@ dependencies {
     compile 'me.tatarka.support:jobscheduler:0.1.1'
     compile 'com.shamanland:fab:0.0.8'
     compile 'com.github.jjobes:SlideDateTimePicker:v1.0.2'
+    compile 'net.rdrei.android.dirchooser:library:2.1@aar'
     compile files('libs/android proxy library.jar')
 }

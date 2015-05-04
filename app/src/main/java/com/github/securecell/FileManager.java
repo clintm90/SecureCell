@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import net.rdrei.android.dirchooser.DirectoryChooserActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,11 @@ public class FileManager extends ActionBarActivity
 
     public void NewFile(MenuItem item)
     {
+        final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
+
+        chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME, "DirChooserSample");
+
+        startActivityForResult(chooserIntent, 0);
     }
 
     public void NewDirectory(MenuItem item)
