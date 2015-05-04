@@ -62,6 +62,7 @@
         android:layout_toRightOf="@+id/model_mainlist_title"
         android:paddingTop="10dp"
         android:text="@string/noset"
-        android:textColor="@color/red" />
+        android:textColor="@color/red"
+        android:visibility="gone" />
 
 </RelativeLayout>

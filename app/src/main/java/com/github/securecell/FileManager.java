@@ -12,6 +12,8 @@ import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.thinkti.android.filechooser.FileChooser;
+
 public class FileManager extends ActionBarActivity
 {
 	private ListView MainContainer;
@@ -39,11 +41,11 @@ public class FileManager extends ActionBarActivity
 	public void NewFile(MenuItem item)
 	{
 		Intent intent = new Intent(this, FileChooser.class);
-		/*ArrayList<String> extensions = new ArrayList<String>();
+		ArrayList<String> extensions = new ArrayList<String>();
 		extensions.add(".pdf");
 		extensions.add(".xls");
 		extensions.add(".xlsx");
-		intent.putStringArrayListExtra("filterFileExtension", extensions);*/
+		intent.putStringArrayListExtra("filterFileExtension", extensions);
 		startActivityForResult(intent, 0);
 		//final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
 
@@ -61,7 +63,7 @@ public class FileManager extends ActionBarActivity
 	{
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if (requestCode == 0)
+		/*if (requestCode == 0)
 		{
 			if (resultCode == DirectoryChooserActivity.RESULT_CODE_DIR_SELECTED)
 			{
@@ -71,7 +73,7 @@ public class FileManager extends ActionBarActivity
 			{
 				// Nothing selected
 			}
-		}
+		}*/
 	}
 
 	@Override

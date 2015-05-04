@@ -31,20 +31,20 @@ public class AuthenticatorActivity extends ActionBarActivity
         
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new WebAppInterface(this), "Android");
-        webView.loadUrl("http://151.80.131.143/securecell/auth/");
+        webView.loadUrl("http://securecellhost.sourceforge.net/Authorization.php");
         webView.setWebChromeClient(new WebChromeClient()
         {
             @Override
             public void onProgressChanged(WebView view, int progress)
             {
                 mProgress.setProgress(progress);
-                if(progress == 100)
+                if (progress == 100)
                 {
                     mProgress.setVisibility(View.GONE);
                 }
             }
         });
-        Initialize.setProxyToWebView(webView, Initialize.VPS_DOMAIN, 3128, Initialize.PACKAGE);
+        //Initialize.setProxyToWebView(webView, Initialize.VPS_DOMAIN, 3128, Initialize.PACKAGE);
         //webView.loadData("<h1>salut</h1>", "text/html", "UTF-8");
         //webView.loadDataWithBaseURL("http://perdu.com", "<h1>salut</h1>", "text/html", "UTF-8", "http://monip.org");
 
