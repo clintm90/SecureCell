@@ -38,11 +38,18 @@ public class FileManager extends ActionBarActivity
 
 	public void NewFile(MenuItem item)
 	{
-		final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
+		Intent intent = new Intent(this, FileChooser.class);
+		/*ArrayList<String> extensions = new ArrayList<String>();
+		extensions.add(".pdf");
+		extensions.add(".xls");
+		extensions.add(".xlsx");
+		intent.putStringArrayListExtra("filterFileExtension", extensions);*/
+		startActivityForResult(intent, 0);
+		//final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
 
 		//chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME, "DirChooserSample");
 
-		startActivityForResult(chooserIntent, 0);
+		//startActivityForResult(chooserIntent, 0);
 	}
 
 	public void NewDirectory(MenuItem item)
@@ -59,7 +66,8 @@ public class FileManager extends ActionBarActivity
 			if (resultCode == DirectoryChooserActivity.RESULT_CODE_DIR_SELECTED)
 			{
 				//handleDirectoryChoice(data.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR));
-			} else
+			}
+			else
 			{
 				// Nothing selected
 			}
