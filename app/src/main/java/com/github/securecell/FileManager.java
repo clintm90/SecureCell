@@ -14,68 +14,85 @@ import java.util.List;
 
 public class FileManager extends ActionBarActivity
 {
-    private ListView MainContainer;
-    private List<EnumFile> enumFile = new ArrayList<EnumFile>();
+	private ListView MainContainer;
+	private List<EnumFile> enumFile = new ArrayList<EnumFile>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.activity_file_manager);
-        
-        MainContainer = (ListView)findViewById(R.id.fileManager);
-        
-        FileManagerAdapter fileManagerAdapter = new FileManagerAdapter(this, enumFile);
-        
-        fileManagerAdapter.add(new EnumFile(this, "Documents", "/sdcard/data/documents", getResources().getDrawable(R.drawable.ic_file_directory), "3,4Mo"));
-        fileManagerAdapter.add(new EnumFile(this, "Sample1.txt", "/sdcard/data/documents/sample1.txt", getResources().getDrawable(R.drawable.ic_file_text), "1,2Mo"));
-        
-        MainContainer.setAdapter(fileManagerAdapter);
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
 
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-    }
+		setContentView(R.layout.activity_file_manager);
 
-    public void NewFile(MenuItem item)
-    {
-        final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
+		MainContainer = (ListView) findViewById(R.id.fileManager);
 
-        chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME, "DirChooserSample");
+		FileManagerAdapter fileManagerAdapter = new FileManagerAdapter(this, enumFile);
 
-        startActivityForResult(chooserIntent, 0);
-    }
+		fileManagerAdapter.add(new EnumFile(this, "Documents", "/sdcard/data/documents", getResources().getDrawable(R.drawable.ic_file_directory), "3,4Mo"));
+		fileManagerAdapter.add(new EnumFile(this, "Sample1.txt", "/sdcard/data/documents/sample1.txt", getResources().getDrawable(R.drawable.ic_file_text), "1,2Mo"));
 
-    public void NewDirectory(MenuItem item)
-    {
-    }
+		MainContainer.setAdapter(fileManagerAdapter);
 
-    @Override
-    public void onBackPressed()
-    {
-        setResult(RESULT_OK, new Intent().putExtra("result", 1));
-        super.onBackPressed();
-    }
+		overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_file_manager, menu);
-        return true;
-    }
+	public void NewFile(MenuItem item)
+	{
+		final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        int id = item.getItemId();
+		//chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME, "DirChooserSample");
 
-        switch (id)
-        {
-            case android.R.id.home:
-                setResult(RESULT_OK, new Intent().putExtra("result", 1));
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+		startActivityForResult(chooserIntent, 0);
+	}
+
+	public void NewDirectory(MenuItem item)
+	{
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == 0)
+		{
+			if (resultCode == DirectoryChooserActivity.RESULT_CODE_DIR_SELECTED)
+			{
+				//handleDirectoryChoice(data.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR));
+			} else
+			{
+				// Nothing selected
+			}
+		}
+	}
+
+	@Override
+	public void onBackPressed()
+	{
+		setResult(RESULT_OK, new Intent().putExtra("result", 1));
+		super.onBackPressed();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_file_manager, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		int id = item.getItemId();
+
+		switch (id)
+		{
+			case android.R.id.home:
+				setResult(RESULT_OK, new Intent().putExtra("result", 1));
+				finish();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }

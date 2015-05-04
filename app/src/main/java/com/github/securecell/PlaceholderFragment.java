@@ -26,6 +26,10 @@ public class PlaceholderFragment extends Fragment
     private static final String ARG_SECTION_NUMBER = "section_number";
     private NotificationManager mNotificationManager;
 
+    public PlaceholderFragment()
+    {
+    }
+
     public static PlaceholderFragment newInstance(int sectionNumber)
     {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -33,10 +37,6 @@ public class PlaceholderFragment extends Fragment
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public PlaceholderFragment()
-    {
     }
 
     @Override
@@ -68,7 +68,7 @@ public class PlaceholderFragment extends Fragment
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                     {
                         //((ImageView)view.findViewById(R.id.model_mainlist_icon)).getDrawable().setColorFilter(0xffff0000, PorterDuff.Mode.MULTIPLY);   //.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
-                        ((ImageView)view.findViewById(R.id.model_mainlist_icon)).setImageDrawable(((EnumMain)view.getTag()).HoverPhoto);
+                        //((ImageView)view.findViewById(R.id.model_mainlist_icon)).setImageDrawable(((EnumMain)view.getTag()).HoverPhoto);
                         
                         Intent ToIntent = null;
                         switch(position)
