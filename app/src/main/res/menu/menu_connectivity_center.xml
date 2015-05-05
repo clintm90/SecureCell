@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.github.securecellcore.ConnectivityCenter">
+
+    <item android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+          android:title="@string/more"
+          app:showAsAction="ifRoom|withText">
+        <menu>
+            <item android:id="@+id/action_netmonitor"
+                  android:title="Monitoring réseau"
+                  app:showAsAction="always" />
+            
+            <item android:id="@+id/action_getip"
+                  android:title="Obtenir l'adresse IP distante"
+                  app:showAsAction="always" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.github.securecellcore.Backup">
+
+    <item android:id="@+id/action_calendar"
+          android:title="@string/set_backing"
+          android:icon="@drawable/ic_action_calendar"
+          android:onClick="PickDateBackup"
+          app:showAsAction="always"/>
+
+    <!--<item android:id="@+id/action_settings"
+          android:title="@string/parameters"
+          android:icon="@drawable/ic_action_settings"
+          app:showAsAction="never"/>-->
+</menu>

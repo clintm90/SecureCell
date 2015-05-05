@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SecureCell</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">SecureCell</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Options</string>
+    <string name="noset">.</string>
+    <string name="appinstalled">TrackCell : Nouvelle application installé</string>
+    <string name="appinstalledwouldinternet">Autorizer l\'application à se connecter à internet ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="share">Partager</string>
+    <string name="more">En savoir plus</string>
+    <string name="about">"A Propos&#8230;</string>
+    <string name="title_activity_browser">Navigation sécurisé</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_authenticator">Connexion à SecureCell</string>
+    <string name="status_server">Etat du Service</string>
+    <string name="title_activity_task_manager">Gestionnaire des Tâches</string>
+    <string name="loading">Chargement en cours...</string>
+    <string name="title_activity_backup">Sauvegarde en Ligne</string>
+    <string name="set_backing">Programmer une sauvegarde</string>
+    <string name="title_activity_connectivity_center">Centre des Connexions</string>
+    <string name="action_wifi">Wifi</string>
+    <string name="title_activity_task">Tâche</string>
+    <string name="uninstall">Désinstaller</string>
+    <string name="alert">Alerter</string>
+    <string name="title_activity_file_manager">Gestionnaire de fichiers</string>
+    <string name="newfile">Ajouter un fichier</string>
+    <string name="newdirectory">Ajouter un dossier</string>
+    <string name="myfiles">Mes fichiers</string>
+    <string name="crash_dialog_text">SecureCell vient de crasher !</string>
+    <string name="crash_dialog_prompt">Voulez-vous envoyer un commentaire sur le crash ?</string>
+    <string name="running_apps">Applications en cours...</string>
+    <string name="others_apps">Autres applications</string>
+    <string name="title_activity_call_manager">CallManager</string>
+    <string name="filter_calls">Filtrer les appels</string>
+    <string name="home">Accueil</string>
+    <string name="bank_protect">Protection Bancaire</string>
+    <string name="gps_data">Données de Localisation</string>
+
+</resources>

@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.github.securecellcore.Main">
+
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/about"
+        android:icon="@drawable/ic_action_lock_open"
+        app:showAsAction="ifRoom|withText"/>
+    
+    <item android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+          android:title="@string/more"
+          app:showAsAction="ifRoom|withText">
+        <menu>
+            <item android:id="@+id/action_share"
+                  android:title="@string/share"
+                  app:showAsAction="ifRoom|withText" />
+            
+            <item android:id="@+id/action_parameters"
+                  android:title="@string/action_settings"
+                  android:onClick="Parameters"
+                  app:showAsAction="ifRoom|withText" />
+        </menu>
+    </item>
+</menu>

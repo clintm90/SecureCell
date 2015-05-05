@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.github.securecellcore.CallManager">
+    
+    <!--<item android:id="@+id/action_"
+          android:title="@string/action_"
+          android:icon="@drawable/"
+          app:showAsAction="always"/>-->
+</menu>

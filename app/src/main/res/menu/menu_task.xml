@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.github.securecellcore.Task">
+
+    <item android:id="@+id/action_alert"
+          android:title="@string/alert"
+          android:icon="@drawable/ic_action_alert"
+          android:onClick="AlertPackage"
+          app:showAsAction="always"/>
+
+    <item android:id="@+id/action_uninstall"
+          android:title="@string/uninstall"
+          android:icon="@drawable/ic_action_uninstall"
+          android:onClick="UninstallPackage"
+          app:showAsAction="always"/>
+</menu>
