@@ -12,6 +12,8 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import javax.xml.transform.Result;
+
 public class ProxyServer implements Runnable
 {
     public ServerSocket Sock;
@@ -63,7 +65,7 @@ public class ProxyServer implements Runnable
 
         try
         {
-            Socket socket = new Socket(InetAddress.getByName("www.monip.org"), 80);
+            Socket socket = new Socket(InetAddress.getByName(domain), 80);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream());
             /*out.print("GET http://www.monip.org/ HTTP/1.1\r\n" +
@@ -74,9 +76,21 @@ public class ProxyServer implements Runnable
                         "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\n" +
                         "Cache-Control: max-age=0\r\n" +
                         "Proxy-Connection: keep-alive\r\n\r\n");*/
-            out.print("GET http://www.monip.org/ HTTP/1.1\r\nHost: www.monip.org\r\nAccept-Language: fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\nX-Forwarded-For: 205.48.32.165\r\nUser-Agent: Mozilla/5.0 (Linux; Android 4.2.2; OZZY Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.93 Mobile Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\nConnection: close\r\n\r\n");
-            //out.print(Request.Compile(ResultRequest));
+            //out.print("GET http://www.monip.org/ HTTP/1.1\r\nHost: www.monip.org\r\nAccept-Language: fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\nX-Forwarded-For: 205.48.32.165\r\nUser-Agent: Mozilla/5.0 (Linux; Android 4.2.2; OZZY Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.93 Mobile Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp\r\nConnection: close\r\n\r\n");
+
+            Request toReplayRequest = new Request();
+            toReplayRequest.Method = ResultRequest.Method;
+            toReplayRequest.Path = ResultRequest.Path;
+            toReplayRequest.Version = ResultRequest.Version;
+            toReplayRequest.Fields.put("Host", domain);
+            toReplayRequest.Fields.put("Accept-Language", "fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4");
+            toReplayRequest.Fields.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp");
+            //toReplayRequest.Fields.put("X-Forwarded-For", "205.48.32.165");
+            toReplayRequest.Fields.put("User-Agent", "Mozilla/5.0 (Linux; Android 4.2.2; OZZY Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.93 Mobile Safari/537.36");
+            toReplayRequest.Fields.put("Connection", "close");
+            out.print(Request.Compile(toReplayRequest));
             out.flush();
+
             while ((line = in.readLine()) != null)
             {
                 mRTS += line + "\r\n";
