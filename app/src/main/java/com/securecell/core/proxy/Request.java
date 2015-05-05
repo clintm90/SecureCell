@@ -17,8 +17,9 @@ public class Request implements Serializable
     public String Method = null;
     public String Path = null;
     public String Version = null;
+    public Integer Port = 80;
     public Map<String, String> Fields = new HashMap<String, String>();
-    
+
     public static Request Parse(String value)
     {
         Request mRTS = new Request();
@@ -28,6 +29,14 @@ public class Request implements Serializable
         mRTS.Method = first_line[0];
         mRTS.Path = first_line[1];
         mRTS.Version = first_line[2];
+
+        try
+        {
+            mRTS.Port = Integer.valueOf(mRTS.Path.split(":")[1]);
+        }
+        catch(Exception e)
+        {
+        }
         
         for(String current_line : lines)
         {

@@ -1,5 +1,7 @@
 package com.securecell.core.proxy;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +20,8 @@ public class Response implements Serializable
 
     public static Response Parse(String value)
     {
+        Log.e("RESULT", value);
+
         Response mRTS = new Response();
         String[] header = value.split("\r\n\r\n");
         String[] lines = header[0].split("\r\n");
@@ -26,6 +30,7 @@ public class Response implements Serializable
         mRTS.Version = first_line[0];
         mRTS.StatusCode = Integer.valueOf(first_line[1]);
         mRTS.StatusMessage = first_line[2];
+        mRTS.Content = null;
         
         try
         {
@@ -33,7 +38,6 @@ public class Response implements Serializable
         }
         catch(Exception e)
         {
-            e.printStackTrace();
         }
         
         for(String current_line : lines)
