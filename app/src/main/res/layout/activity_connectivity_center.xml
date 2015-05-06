@@ -10,7 +10,7 @@
         android:layout_height="150dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/material_blue_grey_800">
+        android:background="@color/grey">
 
     </LinearLayout>
 
