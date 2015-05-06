@@ -10,14 +10,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ConnectivityCenterAdapter extends ArrayAdapter<EnumFile>
+public class ConnectivityCenterAdapter extends ArrayAdapter<EnumAccessPoint>
 {
     private final Context context;
-    private final List<EnumFile> values;
+    private final List<EnumAccessPoint> values;
 
-    public ConnectivityCenterAdapter(Context context, List<EnumFile> values)
+    public ConnectivityCenterAdapter(Context context, List<EnumAccessPoint> values)
     {
-        super(context, R.layout.model_file, values);
+        super(context, R.layout.model_access_point, values);
         this.context = context;
         this.values = values;
     }
@@ -27,18 +27,18 @@ public class ConnectivityCenterAdapter extends ArrayAdapter<EnumFile>
     {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.model_file, parent, false);
+        View rowView = inflater.inflate(R.layout.model_access_point, parent, false);
         rowView.setTag(values.get(position));
 
-        ImageView mModelFileIcon = (ImageView)rowView.findViewById(R.id.model_filelist_icon);
-        TextView mModelFileTitle = (TextView)rowView.findViewById(R.id.model_filelist_title);
-        TextView mModelFileDescription = (TextView)rowView.findViewById(R.id.model_filelist_description);
-        TextView mModelFileSize = (TextView)rowView.findViewById(R.id.model_filelist_size);
+        ImageView mModelAccessPointIcon = (ImageView)rowView.findViewById(R.id.model_accesspoint_icon);
+        TextView mModelAccessPointTitle = (TextView)rowView.findViewById(R.id.model_accesspoint_title);
+        TextView mModelAccessPointDescription = (TextView)rowView.findViewById(R.id.model_accesspoint_description);
+        TextView mModelAccessPointStatus = (TextView)rowView.findViewById(R.id.model_accesspoint_status);
 
-        mModelFileIcon.setImageDrawable(values.get(position).Icon);
-        mModelFileTitle.setText(values.get(position).Title);
-        mModelFileDescription.setText(values.get(position).Description);
-        mModelFileSize.setText(values.get(position).Size);
+        //mModelAccessPointIcon.setImageDrawable(values.get(position).Icon);
+        mModelAccessPointTitle.setText(values.get(position).Title);
+        mModelAccessPointDescription.setText(values.get(position).Description);
+        mModelAccessPointStatus.setText(values.get(position).Status);
 
         return rowView;
     }

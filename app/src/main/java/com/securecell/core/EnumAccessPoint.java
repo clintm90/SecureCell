@@ -8,13 +8,13 @@ public class EnumAccessPoint
     public String Title;
     public String Description;
     public Drawable Icon;
-    public String Size;
+    public String Status;
 
-    public EnumAccessPoint(Context context, String title, String description, Drawable icon, String size)
+    public EnumAccessPoint(Context context, String title, String description, Drawable icon, String status)
     {
         Title = title;
         Description = description;
         Icon = icon;
-        Size = size;
+        Status = status;
     }
 }

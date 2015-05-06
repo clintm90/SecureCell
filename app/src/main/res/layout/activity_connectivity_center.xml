@@ -10,8 +10,17 @@
         android:layout_height="150dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/grey">
+        android:background="@color/grey"
+        android:id="@+id/ConnectivityCenterHeader">
 
     </LinearLayout>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ConnectivityCenterContainer"
+        android:layout_below="@+id/ConnectivityCenterHeader"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

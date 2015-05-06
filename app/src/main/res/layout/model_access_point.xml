@@ -4,7 +4,7 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/model_filelist_title"
+        android:id="@+id/model_accesspoint_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="0dp"
@@ -17,13 +17,13 @@
         android:textColor="#333333"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/model_filelist_icon"
-        android:layout_toEndOf="@+id/model_filelist_icon"
+        android:layout_toRightOf="@+id/model_accesspoint_icon"
+        android:layout_toEndOf="@+id/model_accesspoint_icon"
         android:lines="1"
         android:ellipsize="end"/>
 
     <TextView
-        android:id="@+id/model_filelist_description"
+        android:id="@+id/model_accesspoint_description"
         android:text="@string/noset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,20 +33,20 @@
         android:paddingRight="12dp"
         android:layout_alignWithParentIfMissing="true"
         android:paddingTop="3dp"
-        android:layout_below="@+id/model_filelist_title"
-        android:layout_alignLeft="@+id/model_filelist_title"
-        android:layout_alignStart="@+id/model_filelist_title"
+        android:layout_below="@+id/model_accesspoint_title"
+        android:layout_alignLeft="@+id/model_accesspoint_title"
+        android:layout_alignStart="@+id/model_accesspoint_title"
         android:paddingBottom="7dp"
-        android:layout_toLeftOf="@+id/model_filelist_size"
-        android:layout_toStartOf="@+id/model_filelist_size"
+        android:layout_toLeftOf="@+id/model_accesspoint_status"
+        android:layout_toStartOf="@+id/model_accesspoint_status"
         android:ellipsize="start"
         android:lines="1"/>
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/model_filelist_icon"
-        android:src="@drawable/ic_launcher"
+        android:id="@+id/model_accesspoint_icon"
+        android:src="@drawable/ic_action_bars"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -56,7 +56,7 @@
         android:padding="5dp"/>
 
     <TextView
-        android:id="@+id/model_filelist_size"
+        android:id="@+id/model_accesspoint_status"
         android:text="@string/noset"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:layout_alignWithParentIfMissing="true"
         android:paddingTop="3dp"
         android:paddingBottom="7dp"
-        android:layout_below="@+id/model_filelist_title"
+        android:layout_below="@+id/model_accesspoint_title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:ellipsize="end"
