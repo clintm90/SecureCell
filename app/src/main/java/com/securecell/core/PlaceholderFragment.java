@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -114,6 +115,9 @@ public class PlaceholderFragment extends Fragment
                                         }
                                     }
                                 });
+                                mStatusServiceWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+                                mStatusServiceWebView.getSettings().setAppCacheEnabled(false);
+                                mStatusServiceWebView.clearCache(true);
                                 mStatusServiceWebView.loadUrl("http://securecellhost.sourceforge.net/ServiceStatus.php");
                                 Initialize.setProxyToWebView(mStatusServiceWebView, Initialize.VPS_DOMAIN, 3128, "com.github.securecell");
                                 builder.setView(mModelStatus);
