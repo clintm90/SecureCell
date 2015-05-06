@@ -1,6 +1,7 @@
 package com.securecell.core;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -29,12 +30,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @ReportsCrashes(
-        formUri = "http://151.80.131.143/securecell/backend.php"
+        formUri = "securecellhost.sourceforge.net/Backend.php"
 )
 
 public class Initialize extends Application
 {
-    public static String PACKAGE = "com.github.securecell";
+    public static String PACKAGE = "com.securecell.core";
     public static String VPS_DOMAIN = "151.80.131.143";
     public static int PROXY_PORT = 9090;
     public static boolean SSL = true;
@@ -60,6 +61,7 @@ public class Initialize extends Application
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static void setMockLocation(Context context, double latitude, double longitude, float accuracy)
     {
         LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);

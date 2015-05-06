@@ -35,7 +35,7 @@ public class ConnectivityCenterAdapter extends ArrayAdapter<EnumAccessPoint>
         TextView mModelAccessPointDescription = (TextView)rowView.findViewById(R.id.model_accesspoint_description);
         TextView mModelAccessPointStatus = (TextView)rowView.findViewById(R.id.model_accesspoint_status);
 
-        //mModelAccessPointIcon.setImageDrawable(values.get(position).Icon);
+        mModelAccessPointIcon.setImageDrawable(values.get(position).Icon);
         mModelAccessPointTitle.setText(values.get(position).Title);
         mModelAccessPointDescription.setText(values.get(position).Description);
         mModelAccessPointStatus.setText(values.get(position).Status);

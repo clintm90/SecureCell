@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.net.VpnService;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -62,6 +63,10 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
+        intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {Initialize.PACKAGE});
+        startActivity(intent);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
