@@ -24,7 +24,7 @@ public class WebAppInterface
         String accountType = parent.getIntent().getStringExtra("auth.token");
         if (accountType == null)
         {
-            accountType = "com.github.securecell";   //AccountAuthenticator.ACCOUNT_TYPE;
+            accountType = "com.securecell.core";   //AccountAuthenticator.ACCOUNT_TYPE;
         }
 
         AccountManager accMgr = AccountManager.get(mContext);
