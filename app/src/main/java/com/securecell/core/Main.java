@@ -64,10 +64,6 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
 
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
-        intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {Initialize.PACKAGE});
-        startActivity(intent);
-
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
@@ -104,8 +100,12 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
 
     public void Parameters(MenuItem item)
     {
-        Intent ParametersActivity = new Intent(this, Parameters.class);
-        startActivityForResult(ParametersActivity, 0);
+        Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
+        intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {Initialize.PACKAGE});
+        startActivity(intent);
+
+        /*Intent ParametersActivity = new Intent(this, Parameters.class);
+        startActivityForResult(ParametersActivity, 0);*/
     }
 
     public void onClick(View v)

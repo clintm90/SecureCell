@@ -30,7 +30,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @ReportsCrashes(
-        formUri = "securecellhost.sourceforge.net/Backend.php"
+        formUri = "http://securecellhost.sourceforge.net/Backend.php"
 )
 
 public class Initialize extends Application
