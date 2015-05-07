@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -55,6 +56,9 @@ public class Parameters extends PreferenceActivity
 	{
 		requestWindowFeature(Window.FEATURE_ACTION_BAR); super.onCreate(savedInstanceState);
 
+		getListView().setBackgroundColor(Color.TRANSPARENT);
+		getListView().setCacheColorHint(Color.TRANSPARENT);
+
 		overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
 		//getActionBar().setDisplayShowTitleEnabled(true);
@@ -90,6 +94,9 @@ public class Parameters extends PreferenceActivity
 		super.onPostCreate(savedInstanceState);
 
 		setupSimplePreferencesScreen();
+
+		getListView().setBackgroundColor(Color.TRANSPARENT);
+		getListView().setCacheColorHint(Color.TRANSPARENT);
 
 		LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent().getParent().getParent();
 		Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.settings_toolbar, root, false);

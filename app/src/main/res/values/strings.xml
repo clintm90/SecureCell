@@ -48,5 +48,6 @@
     <string name="home">Accueil</string>
     <string name="bank_protect">Protection Bancaire</string>
     <string name="gps_data">Données de Localisation</string>
+    <string name="action_addcontact">Ajouter un contact</string>
 
 </resources>

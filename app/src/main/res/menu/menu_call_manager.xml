@@ -2,9 +2,10 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.github.securecellcore.CallManager">
-    
-    <!--<item android:id="@+id/action_"
-          android:title="@string/action_"
-          android:icon="@drawable/"
-          app:showAsAction="always"/>-->
+
+      <item android:id="@+id/action_add"
+            android:title="@string/action_addcontact"
+            android:icon="@drawable/ic_action_newfile"
+            app:showAsAction="always"
+            />
 </menu>

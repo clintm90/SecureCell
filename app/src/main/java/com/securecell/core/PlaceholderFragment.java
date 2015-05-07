@@ -119,8 +119,9 @@ public class PlaceholderFragment extends Fragment
                                 mStatusServiceWebView.getSettings().setAppCacheEnabled(false);
                                 mStatusServiceWebView.clearCache(true);
                                 mStatusServiceWebView.loadUrl("http://securecellhost.sourceforge.net/ServiceStatus.php");
-                                Initialize.setProxyToWebView(mStatusServiceWebView, Initialize.VPS_DOMAIN, 3128, "com.github.securecell");
+                                //Initialize.setProxyToWebView(mStatusServiceWebView, Initialize.VPS_DOMAIN, 3128, Initialize.PACKAGE);
                                 builder.setView(mModelStatus);
+                                builder.setCancelable(false);
                                 builder.setPositiveButton("Valider", new DialogInterface.OnClickListener()
                                 {
                                     @Override
@@ -128,7 +129,6 @@ public class PlaceholderFragment extends Fragment
                                     {
                                     }
                                 });
-                                builder.setCancelable(true);
                                 builder.create();
                                 builder.show();
                                 break;

@@ -37,6 +37,7 @@ public class Initialize extends Application
 {
     public static String PACKAGE = "com.securecell.core";
     public static String VPS_DOMAIN = "151.80.131.143";
+    public static String SERVER = "securecellhost.sourceforge.net";
     public static int PROXY_PORT = 9090;
     public static boolean SSL = true;
     public static boolean ServerRunning = false;

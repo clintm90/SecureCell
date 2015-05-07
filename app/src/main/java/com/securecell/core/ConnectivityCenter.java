@@ -29,6 +29,7 @@ public class ConnectivityCenter extends ActionBarActivity
         connectivityCenterAdapter.add(new EnumAccessPoint(getApplicationContext(), "Virgin Mobile", "CellID: 10285", getResources().getDrawable(R.drawable.ic_action_bars), "100%"));
         connectivityCenterAdapter.add(new EnumAccessPoint(getApplicationContext(), "NEUF_A400", "Sécurisé par WPA2", getResources().getDrawable(R.drawable.ic_action_wifi), "45%"));
         connectivityCenterAdapter.add(new EnumAccessPoint(getApplicationContext(), "FreeWifi", "Ouvert", getResources().getDrawable(R.drawable.ic_action_wifi), "30%"));
+        connectivityCenterAdapter.add(new EnumAccessPoint(getApplicationContext(), "Orange", "CellID: 20482", getResources().getDrawable(R.drawable.ic_action_bars), "10%"));
 
         MainContainer.setAdapter(connectivityCenterAdapter);
 

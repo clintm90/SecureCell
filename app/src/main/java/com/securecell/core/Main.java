@@ -1,10 +1,14 @@
 package com.securecell.core;
 
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.net.VpnService;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
@@ -100,8 +104,8 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
 
     public void Parameters(MenuItem item)
     {
-        Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
-        intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {Initialize.PACKAGE});
+        final Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
+        intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[]{"com.securecell.core"});
         startActivity(intent);
 
         /*Intent ParametersActivity = new Intent(this, Parameters.class);
