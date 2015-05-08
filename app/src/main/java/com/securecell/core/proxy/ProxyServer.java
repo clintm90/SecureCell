@@ -1,5 +1,6 @@
 package com.securecell.core.proxy;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.securecell.core.Initialize;
@@ -10,7 +11,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
@@ -20,9 +20,6 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.StringTokenizer;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocket;
 
 public class ProxyServer implements Runnable
 {
@@ -73,15 +70,11 @@ public class ProxyServer implements Runnable
 
 		domain = ResultRequest.Fields.get("Host");
 
+		Log.e("result", request);
+
 		try
 		{
 			Socket socket = new Socket(InetAddress.getByName(domain), ResultRequest.Port);
-			/*URL url = new URL("https://www.google.com");
-			HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-			con.getResponseCode();
-			con.disconnect();
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			PrintWriter out = new PrintWriter(con.getOutputStream());*/
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter out = new PrintWriter(socket.getOutputStream());
 
