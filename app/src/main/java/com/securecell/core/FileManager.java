@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.nononsenseapps.filepicker.FilePickerActivity;
+import com.sromku.simple.storage.SimpleStorage;
+import com.sromku.simple.storage.SimpleStorageConfiguration;
+import com.sromku.simple.storage.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +38,23 @@ public class FileManager extends ActionBarActivity
 		}
 		else
 		{
-			storage = SimpleStorage.getInternalStorage(mContext);
+			storage = SimpleStorage.getInternalStorage(this);
 		}
+
+		// set encryption
+		String IVX = "abcdefghijklmnop"; // 16 lenght - not secret
+		String SECRET_KEY = "secret1234567890"; // 16 lenght - secret
+
+		SimpleStorageConfiguration configuration = new SimpleStorageConfiguration.Builder()
+				.setEncryptContent(IVX, SECRET_KEY)
+				.build();
+
+		SimpleStorage.updateConfiguration(configuration);
+
+		storage.createFile("MyDirName", "fileName", "this is the secret data");
+		String content = storage.readTextFile("MyDirName", "fileName");
+
+		Log.e("result", content);
 
 		MainContainer = (ListView) findViewById(R.id.fileManager);
 
