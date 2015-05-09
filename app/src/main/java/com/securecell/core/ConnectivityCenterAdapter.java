@@ -45,11 +45,11 @@ public class ConnectivityCenterAdapter extends ArrayAdapter<EnumAccessPoint>
 
         if(values.get(position).State)
         {
-            mModelAccessPointIcon.setImageDrawable(context.getDrawable(R.drawable.led_green));
+            mModelAccessPointState.setImageDrawable(context.getDrawable(R.drawable.led_green));
         }
         else
         {
-            mModelAccessPointIcon.setImageDrawable(context.getDrawable(R.drawable.led_red));
+            mModelAccessPointState.setImageDrawable(context.getDrawable(R.drawable.led_red));
         }
 
         return rowView;
