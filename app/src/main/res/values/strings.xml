@@ -49,5 +49,6 @@
     <string name="bank_protect">Protection Bancaire</string>
     <string name="gps_data">Données de Localisation</string>
     <string name="action_addcontact">Ajouter un contact</string>
+    <string name="action_block_hidden_number">Bloquer les appels masqués</string>
 
 </resources>

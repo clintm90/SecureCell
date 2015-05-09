@@ -1,5 +1,6 @@
 package com.securecell.core;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ public class ConnectivityCenterAdapter extends ArrayAdapter<EnumAccessPoint>
         this.values = values;
     }
 
+    @SuppressLint("NewApi")
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
@@ -31,6 +33,7 @@ public class ConnectivityCenterAdapter extends ArrayAdapter<EnumAccessPoint>
         rowView.setTag(values.get(position));
 
         ImageView mModelAccessPointIcon = (ImageView)rowView.findViewById(R.id.model_accesspoint_icon);
+        ImageView mModelAccessPointState = (ImageView)rowView.findViewById(R.id.model_accesspoint_state);
         TextView mModelAccessPointTitle = (TextView)rowView.findViewById(R.id.model_accesspoint_title);
         TextView mModelAccessPointDescription = (TextView)rowView.findViewById(R.id.model_accesspoint_description);
         TextView mModelAccessPointStatus = (TextView)rowView.findViewById(R.id.model_accesspoint_status);
@@ -39,6 +42,15 @@ public class ConnectivityCenterAdapter extends ArrayAdapter<EnumAccessPoint>
         mModelAccessPointTitle.setText(values.get(position).Title);
         mModelAccessPointDescription.setText(values.get(position).Description);
         mModelAccessPointStatus.setText(values.get(position).Status);
+
+        if(values.get(position).State)
+        {
+            mModelAccessPointIcon.setImageDrawable(context.getDrawable(R.drawable.led_green));
+        }
+        else
+        {
+            mModelAccessPointIcon.setImageDrawable(context.getDrawable(R.drawable.led_red));
+        }
 
         return rowView;
     }
