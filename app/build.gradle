@@ -71,6 +71,7 @@ dependencies {
     compile 'org.sufficientlysecure:donations:2.3'
     compile 'com.nononsenseapps:filepicker:2.0.5'
     compile 'com.github.rey5137:material:1.1.0'
+    compile 'com.sromku.simple.storage:library:1.0.0'
     //compile 'com.github.sogyf:goja-qrcode:0.1.2'
     //compile 'de.bripkens:gravatar4java:1.2'
     compile 'de.greenrobot:eventbus:2.4.0'

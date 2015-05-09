@@ -57,6 +57,7 @@ public class Backup extends ActionBarActivity
                 .title("Dialog title")
                 .positiveAction("OK")
                 .negativeAction("CANCEL")
+                .contentView(view)
                 .cancelable(true)
         .show();
     }

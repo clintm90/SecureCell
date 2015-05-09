@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.rey.material.widget.SnackBar;
+import com.rey.material.app.Dialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +102,7 @@ public class PlaceholderFragment extends Fragment
                                 break;
                             
                             case 5:
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 final View mModelStatus = getActivity().getLayoutInflater().inflate(R.layout.alert_status, null);
                                 WebView mStatusServiceWebView = (WebView)mModelStatus.findViewById(R.id.statusServiceWebview);
                                 final ProgressBar mStatusServiceProgress = (ProgressBar)mModelStatus.findViewById(R.id.statusServiceProgress);
@@ -122,7 +123,7 @@ public class PlaceholderFragment extends Fragment
                                 mStatusServiceWebView.clearCache(true);
                                 mStatusServiceWebView.loadUrl("http://securecellhost.sourceforge.net/ServiceStatus.php");
                                 //Initialize.setProxyToWebView(mStatusServiceWebView, Initialize.VPS_DOMAIN, 3128, Initialize.PACKAGE);
-                                builder.setView(mModelStatus);
+                                /*builder.setView(mModelStatus);
                                 builder.setCancelable(false);
                                 builder.setPositiveButton("Valider", new DialogInterface.OnClickListener()
                                 {
@@ -132,7 +133,12 @@ public class PlaceholderFragment extends Fragment
                                     }
                                 });
                                 builder.create();
-                                builder.show();
+                                builder.show();*/
+                                Dialog mDialog = new Dialog(getActivity());
+                                mDialog.contentView(mModelStatus);
+                                mDialog.positiveAction("Valider");
+                                mDialog.cancelable(false);
+                                mDialog.show();
                                 break;
                             
                             default:

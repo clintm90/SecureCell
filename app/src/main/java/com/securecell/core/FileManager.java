@@ -2,9 +2,7 @@ package com.securecell.core;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -28,6 +26,16 @@ public class FileManager extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_file_manager);
+
+		Storage storage = null;
+		if (SimpleStorage.isExternalStorageWritable())
+		{
+			storage = SimpleStorage.getExternalStorage();
+		}
+		else
+		{
+			storage = SimpleStorage.getInternalStorage(mContext);
+		}
 
 		MainContainer = (ListView) findViewById(R.id.fileManager);
 
