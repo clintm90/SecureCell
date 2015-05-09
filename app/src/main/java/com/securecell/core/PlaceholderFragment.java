@@ -18,6 +18,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.rey.material.widget.SnackBar;
+
 import java.util.ArrayList;
 import java.util.List;
 

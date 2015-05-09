@@ -1,64 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
     package="com.securecell.core"
-    android:installLocation="internalOnly" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="internalOnly">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
 
     <!-- <uses-permission android:name="android.permission.INSTALL_PACKAGES" /> -->
     <application
         android:name="com.securecell.core.Initialize"
         android:allowBackup="true"
+        android:backupAgent=".backup.MainAgent"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:persistent="true"
         android:sharedUserId="android.uid.system"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
-        <activity android:name="br.com.thinkti.android.filechooser.FileChooser" />
+        <activity android:name="br.com.thinkti.android.filechooser.FileChooser"/>
+        <activity
+            android:name="com.nononsenseapps.filepicker.FilePickerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/FilePickerTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.backup.api_key"
-            android:value="AEdPqrEAAAAIWqC0riTez8l43sN7d1NCu453YD89ZaYrkIsuDw" />
+            android:value="AEdPqrEAAAAIWNzlkgutsU5pR1IB9iLXBDTZfPLBBqDgJ8ztbg"/>
 
-        <receiver android:name="com.securecell.core.receiver.Startup" >
+        <receiver android:name="com.securecell.core.receiver.Startup">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 
         <service
             android:name="com.securecell.core.service.ScheduleBackup"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service android:name="com.securecell.core.service.ProxyServerService" />
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.securecell.core.service.ProxyServerService"/>
 
-        <receiver android:name="com.securecell.core.receiver.NetworkChange" >
+        <receiver android:name="com.securecell.core.receiver.NetworkChange">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
 
@@ -71,21 +83,21 @@
         </receiver>
         -->
 
-        <receiver android:name="com.securecell.core.receiver.Airplane" >
+        <receiver android:name="com.securecell.core.receiver.Airplane">
             <intent-filter>
-                <action android:name="android.intent.action.AIRPLANE_MODE" />
+                <action android:name="android.intent.action.AIRPLANE_MODE"/>
             </intent-filter>
         </receiver>
         <receiver
             android:name="com.securecell.core.receiver.PackageInstallation"
             android:enabled="true"
-            android:exported="true" >
-            <intent-filter android:priority="100" >
-                <action android:name="android.intent.action.PACKAGE_INSTALL" />
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+            android:exported="true">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.PACKAGE_INSTALL"/>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
 
-                <data android:scheme="package" />
+                <data android:scheme="package"/>
             </intent-filter>
         </receiver>
 
@@ -93,133 +105,133 @@
             android:name="com.securecell.core.Spashscreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <service
             android:name="com.securecell.core.service.VPNService"
-            android:permission="android.permission.BIND_VPN_SERVICE" >
+            android:permission="android.permission.BIND_VPN_SERVICE">
             <intent-filter>
-                <action android:name="android.net.VpnService" />
+                <action android:name="android.net.VpnService"/>
             </intent-filter>
         </service>
 
         <activity
             android:name="com.securecell.core.Main"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.securecell.core.Browser"
             android:label="@string/title_activity_browser"
-            android:parentActivityName="com.securecell.core.Main" >
+            android:parentActivityName="com.securecell.core.Main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
 
         <receiver
             android:name="com.securecell.core.LockWidget"
-            android:label="Example Widget" >
+            android:label="Example Widget">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/lock_widget_info" />
+                android:resource="@xml/lock_widget_info"/>
         </receiver>
 
-        <service android:name="com.securecell.core.AuthenticatorService" >
+        <service android:name="com.securecell.core.AuthenticatorService">
             <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator" />
+                <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/authenticator" />
+                android:resource="@xml/authenticator"/>
         </service>
 
         <activity
             android:name="com.securecell.core.AuthenticatorActivity"
             android:label="@string/title_activity_authenticator"
             android:parentActivityName="com.securecell.core.Main"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
         <activity
             android:name="com.securecell.core.TaskManager"
             android:label="@string/title_activity_task_manager"
-            android:parentActivityName="com.securecell.core.Main" >
+            android:parentActivityName="com.securecell.core.Main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
         <activity
             android:name="com.securecell.core.Backup"
             android:label="@string/title_activity_backup"
-            android:parentActivityName="com.securecell.core.Main" >
+            android:parentActivityName="com.securecell.core.Main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
         <activity
             android:name="com.securecell.core.ConnectivityCenter"
             android:label="@string/title_activity_connectivity_center"
-            android:parentActivityName="com.securecell.core.Main" >
+            android:parentActivityName="com.securecell.core.Main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
         <activity
             android:name="com.securecell.core.Task"
             android:label="@string/title_activity_task"
-            android:parentActivityName="com.securecell.core.TaskManager" >
+            android:parentActivityName="com.securecell.core.TaskManager">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.TaskManager" />
+                android:value="com.securecell.core.TaskManager"/>
         </activity>
 
-        <receiver android:name="com.securecell.core.StatusWidget" >
+        <receiver android:name="com.securecell.core.StatusWidget">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/status_widget_info" />
+                android:resource="@xml/status_widget_info"/>
         </receiver>
 
         <activity
             android:name="com.securecell.core.Parameters"
             android:label="@string/title_activity_parameters"
             android:parentActivityName="com.securecell.core.Main"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
         <activity
             android:name="com.securecell.core.FileManager"
             android:label="@string/myfiles"
-            android:parentActivityName="com.securecell.core.Main" >
+            android:parentActivityName="com.securecell.core.Main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
         <activity
             android:name="com.securecell.core.CallManager"
             android:label="@string/filter_calls"
-            android:parentActivityName="com.securecell.core.Main" >
+            android:parentActivityName="com.securecell.core.Main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.securecell.core.Main" />
+                android:value="com.securecell.core.Main"/>
         </activity>
     </application>
 

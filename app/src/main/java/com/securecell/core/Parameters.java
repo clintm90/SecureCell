@@ -106,6 +106,7 @@ public class Parameters extends PreferenceActivity
 			@Override
 			public void onClick(View v)
 			{
+				setResult(RESULT_OK, new Intent().putExtra("result", 1));
 				finish();
 			}
 		});

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
 import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
+import com.rey.material.app.Dialog;
 import com.securecell.core.service.ScheduleBackup;
 
 import java.util.Date;
@@ -50,6 +51,14 @@ public class Backup extends ActionBarActivity
                 .setInitialDate(new Date())
                 .build()
                 .show();
+
+        Dialog mDialog = new Dialog(this);
+        mDialog
+                .title("Dialog title")
+                .positiveAction("OK")
+                .negativeAction("CANCEL")
+                .cancelable(true)
+        .show();
     }
 
     private SlideDateTimeListener listener = new SlideDateTimeListener() {

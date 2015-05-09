@@ -2,10 +2,22 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.github.securecellcore.FileManager">
-    
-    <item android:id="@+id/action_newfile"
-          android:title="@string/newfile"
-          android:onClick="NewFile"
-          android:icon="@drawable/ic_action_newfile"
-          app:showAsAction="always"/>
+
+      <item android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+            android:title="@string/more"
+            app:showAsAction="ifRoom|withText">
+            <menu>
+                  <item android:id="@+id/action_newfile"
+                        android:title="@string/newfile"
+                        android:onClick="NewFile"
+                        android:icon="@drawable/ic_action_edit"
+                        app:showAsAction="always"/>
+
+                  <item android:id="@+id/action_newdirectory"
+                        android:title="@string/newdirectory"
+                        android:onClick="NewDirectory"
+                        android:icon="@drawable/ic_action_folder_closed"
+                        app:showAsAction="always"/>
+            </menu>
+      </item>
 </menu>

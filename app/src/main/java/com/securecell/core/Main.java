@@ -22,9 +22,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.rey.material.widget.SnackBar;
 import com.securecell.core.service.VPNService;
 
+import java.io.IOException;
 import java.net.ServerSocket;
+import java.security.cert.Certificate;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 /*
 filter gps autorisation
@@ -104,12 +112,12 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
 
     public void Parameters(MenuItem item)
     {
-        final Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
+        /*final Intent intent = new Intent(Settings.ACTION_ADD_ACCOUNT);
         intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[]{"com.securecell.core"});
-        startActivity(intent);
+        startActivity(intent);*/
 
-        /*Intent ParametersActivity = new Intent(this, Parameters.class);
-        startActivityForResult(ParametersActivity, 0);*/
+        Intent ParametersActivity = new Intent(this, Parameters.class);
+        startActivityForResult(ParametersActivity, 0);
     }
 
     public void onClick(View v)

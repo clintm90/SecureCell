@@ -1,16 +1,21 @@
 package com.securecell.core;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.nononsenseapps.filepicker.FilePickerActivity;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import br.com.thinkti.android.filechooser.FileChooser;
 
 public class FileManager extends ActionBarActivity
 {
@@ -38,40 +43,63 @@ public class FileManager extends ActionBarActivity
 
 	public void NewFile(MenuItem item)
 	{
-		Intent intent = new Intent(this, FileChooser.class);
-		ArrayList<String> extensions = new ArrayList<String>();
-		extensions.add(".pdf");
-		extensions.add(".xls");
-		extensions.add(".xlsx");
-		intent.putStringArrayListExtra("filterFileExtension", extensions);
-		startActivityForResult(intent, 0);
-		//final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
+		Intent i = new Intent(this, FilePickerActivity.class);
 
-		//chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME, "DirChooserSample");
+		i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
+		i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
+		i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
 
-		//startActivityForResult(chooserIntent, 0);
+		i.putExtra(FilePickerActivity.EXTRA_START_PATH, "/storage/emulated/0/");
+
+		startActivityForResult(i, 0);
 	}
 
 	public void NewDirectory(MenuItem item)
 	{
 	}
 
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
-		super.onActivityResult(requestCode, resultCode, data);
-
-		/*if (requestCode == 0)
+		if (requestCode == 0 && resultCode == Activity.RESULT_OK)
 		{
-			if (resultCode == DirectoryChooserActivity.RESULT_CODE_DIR_SELECTED)
+			/*if (data.getBooleanExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false))
 			{
-				//handleDirectoryChoice(data.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR));
-			}
-			else
+				// For JellyBean and above
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+				{
+					ClipData clip = data.getClipData();
+
+					if (clip != null)
+					{
+						for (int i = 0; i < clip.getItemCount(); i++)
+						{
+							Uri uri = clip.getItemAt(i).getUri();
+							// Do something with the URI
+						}
+					}
+					// For Ice Cream Sandwich
+				} else
+				{
+					ArrayList<String> paths = data.getStringArrayListExtra(FilePickerActivity.EXTRA_PATHS);
+
+					if (paths != null)
+					{
+						for (String path : paths)
+						{
+							Uri uri = Uri.parse(path);
+							// Do something with the URI
+						}
+					}
+				}
+
+			} else
 			{
-				// Nothing selected
-			}
-		}*/
+				Uri uri = data.getData();
+				// Do something with the URI
+			}*/
+		}
 	}
 
 	@Override

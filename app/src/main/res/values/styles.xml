@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="colorPrimary">@color/red</item>
+        <item name="android:colorPrimaryDark" tools:ignore="NewApi">@color/red_transparent</item>
         <item name="colorAccent">@android:color/holo_blue_dark</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:itemTextAppearance">@style/MenuTextAppearance</item>
-        <item name="android:overlapAnchor">false</item>
+        <item name="android:overlapAnchor" tools:ignore="NewApi">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/red</item>
+        <item name="android:colorPrimaryDark" tools:ignore="NewApi">@color/red</item>
     </style>
 
     <style name="MenuTextAppearance">
@@ -28,6 +30,18 @@
 
     <style name="ButtonBarButton" />
 
-    <style name="MyActionBarStyle"></style>
+    <style name="MyActionBarStyle" />
+
+    <!-- You must inherit from Theme.AppCompat. Dark or light doesn't matter -->
+    <style name="FilePickerTheme" parent="Theme.AppCompat.Light.DialogWhenLarge">
+        <!-- Set these to match your theme -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryDark">@color/red</item>
+        <item name="colorAccent">@color/red</item>
+
+        <!-- These are important. Handled by toolbar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 </resources>

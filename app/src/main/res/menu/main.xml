@@ -15,11 +15,13 @@
         <menu>
             <item android:id="@+id/action_share"
                   android:title="@string/share"
+                  android:icon="@drawable/ic_action_share"
                   app:showAsAction="ifRoom|withText" />
             
             <item android:id="@+id/action_parameters"
                   android:title="@string/action_settings"
                   android:onClick="Parameters"
+                  android:icon="@drawable/ic_action_settings"
                   app:showAsAction="ifRoom|withText" />
         </menu>
     </item>

@@ -67,8 +67,12 @@ dependencies {
 
     //others
     compile 'com.googlecode.libphonenumber:libphonenumber:6.3'
-    compile 'com.github.sogyf:goja-qrcode:0.1.2'
-    compile 'de.bripkens:gravatar4java:1.2'
+    compile 'org.sufficientlysecure:openpgp-api:7.0'
+    compile 'org.sufficientlysecure:donations:2.3'
+    compile 'com.nononsenseapps:filepicker:2.0.5'
+    compile 'com.github.rey5137:material:1.1.0'
+    //compile 'com.github.sogyf:goja-qrcode:0.1.2'
+    //compile 'de.bripkens:gravatar4java:1.2'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'ch.acra:acra:4.6.1'
     compile 'me.tatarka.support:jobscheduler:0.1.1'

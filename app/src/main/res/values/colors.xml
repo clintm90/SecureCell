@@ -2,7 +2,9 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="red">#ED1C24</color>
+    <color name="red_transparent">#AAED1C24</color>
     <color name="grey">#EEEEEE</color>
     <color name="background">#FAFAFA</color>
+    <color name="dark">#303030</color>
 
 </resources>
